@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Java入门</title>
+      <link href="/2020/07/21/Java%E5%85%A5%E9%97%A8/"/>
+      <url>/2020/07/21/Java%E5%85%A5%E9%97%A8/</url>
+      
+        <content type="html"><![CDATA[<p>Java Dvelopment Kit (JDK)<br>    1. Java Runtime Enviroment (JRE)<br>        Includes the code behind all the variable types and built-in functions (ex. the println() function)<br>        包含所有变量类型和Java内置函数涉及的代码 比如println()函数</p><pre><code>    which allows Java code to run on any platform!    It also includes a Java Virtual Machine (JVM).    Runtime Enviroment 还含有一个Java虚拟机 该虚拟机可以从网上下载 可允许Java代码在任何计算机上运行 无论是Windows、Mac还是其它操作系统都可     很多电脑本身就装有Runtime Enviroment 因为计算机需要这个工具来运行网页里的Java应用程序    但是要开发我们自己的程序和Java应用，我们需要第二个工具 也就是Java编译器2. a Java compiler (javac)    A compiler is a special type of program that translates programing language code into code that a computer can excute    Program code --in--&gt; Compiler ---out--&gt; Translated code    Java Code -&gt; Compiler(javac) -&gt; Bytecode -&gt; Java Virtual Machine -&gt; Machine Code </code></pre><p>在编辑器中编写Java代码<br>    subl HelloWorld.java<br>    // 保存文件时 文件名应与类名相同<br>    public class HelloWorld {<br>        // class 在Java中是用来存放函数和代码并关联程序的<br>        public static void main(String[] args) {<br>            System.out.println(“Hello world!”);<br>        }<br>    }</p><p>在terminal中运行Java代码的流程<br>    1. javac 代码文件名.java<br>        对代码进行编译 生成class文件<br>    2. java 文件名<br>        执行java程序<br>    在编辑器修改代码后 需要重新编译</p><p>Java集成开发环境 Intellij<br>Debug<br>    断点<br>    step over<br>    resume<br>    step into<br>    step out</p><p>自动生成注释<br><a href="https://blog.csdn.net/qq_34581118/article/details/78409782" target="_blank" rel="noopener">https://blog.csdn.net/qq_34581118/article/details/78409782</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>极客大学作业提交流程</title>
       <link href="/2020/07/19/%E6%9E%81%E5%AE%A2%E5%A4%A7%E5%AD%A6%E4%BD%9C%E4%B8%9A%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B/"/>
       <url>/2020/07/19/%E6%9E%81%E5%AE%A2%E5%A4%A7%E5%AD%A6%E4%BD%9C%E4%B8%9A%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B/</url>
