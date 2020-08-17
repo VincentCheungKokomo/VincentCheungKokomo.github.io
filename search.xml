@@ -4,12 +4,107 @@
   
     
     <entry>
+      <title>Minimax-Algorithm</title>
+      <link href="/2020/08/14/Minimax-Algorithm/"/>
+      <url>/2020/08/14/Minimax-Algorithm/</url>
+      
+        <content type="html"><![CDATA[<h1 id="—"><a href="#—" class="headerlink" title="—"></a>—</h1><h1 id="title-Minimax-Algorithm"><a href="#title-Minimax-Algorithm" class="headerlink" title="title: Minimax Algorithm"></a>title: Minimax Algorithm</h1><h1 id="date-2020-08-14-20-03-12"><a href="#date-2020-08-14-20-03-12" class="headerlink" title="date: 2020-08-14 20:03:12"></a>date: 2020-08-14 20:03:12</h1><h1 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h1><h1 id="categories-Algorithm"><a href="#categories-Algorithm" class="headerlink" title="categories: Algorithm"></a>categories: Algorithm</h1><h1 id="—-1"><a href="#—-1" class="headerlink" title="—"></a>—</h1><p><a href="https://segmentfault.com/a/1190000013527949" target="_blank" rel="noopener">https://segmentfault.com/a/1190000013527949</a><br>const maxDepth = 4;<br>let counter = 1;</p><p>const dataTree = [<br>                    [<br>                        [<br>                            [3, 17], [2, 12]<br>                        ],<br>                        [<br>                            [15], [25, 0]<br>                        ]<br>                    ],<br>                    [<br>                        [<br>                            [2, 5], [3]<br>                        ]<br>                        [<br>                            [2, 14]<br>                        ]<br>                    ]<br>                ];</p><p>constructor(data, type, depth) {<br>    this.data = data;<br>    this.type = type; // 区分此节点的种类是max或min<br>    this.depth = depth;<br>}</p><p>function changeType(type) {<br>    return type === ‘max’ ? ‘min’ : ‘max’;<br>}</p><p>score() {<br>    // 到达了最大深度后，此时的data是数组最内层的数字<br>    if (this.depth &gt;= 4) {<br>        return this.data;<br>    }    </p><pre><code>// 对于max节点，返回的是子节点中的最大值if (this.type === &apos;max&apos;) {    let maxScore = -1000;    for (let i=0; i &lt; this.data.length; i++) {        const d = this.data[i];        // 生成新的节点，子节点的type会和父节点不同        const childNode = new Node(d, changeType(this.type), this.depth+1);        // 递归获取其分数        const childScore = childNode.score();        if (childScore &gt; maxScore) {            maxScore = childScore;        }    }    return maxScore;}// 对于min节点，返回的是子节点中的最小值if (this.type === &apos;min&apos;) {    let minScore = 1000;    for (let i=0; i &lt; this.data.length; i++) {        const d = this.data[i];        // 生成新的节点，子节点的type会和父节点不同        const childNode = new Node(d, changeType(this.type), this.depth+1);        // 递归获取其分数        const childScore = childNode.score();        if (childScore &gt; minScore) {            minScore = childScore;        }    }    return minScore;}</code></pre><p>}</p><p>const testNode = new Node(dataTree, ‘max’, 0);<br>console.log(testNode.score());</p><hr><p>Alpha-beta 剪枝算法的实现<br>是minimax的改进</p><p>class Node{<br>    constructor(data, type, depth) {<br>        this.data = data;<br>        this.type = type; // 区分此节点的种类是max或min<br>        this.depth = depth;</p><pre><code>    this.alpha = alpha || -Infinity;    this.beta = beta || Infinity;}score() {}</code></pre><p>}</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>AI</title>
+      <link href="/2020/08/13/AI/"/>
+      <url>/2020/08/13/AI/</url>
+      
+        <content type="html"><![CDATA[<p>project1数独<br>约束传播和搜索</p><p>project2 Build an AI that play games<br>minimax alpha-beta pruning<br>吃豆人<br>BFS DFS A*<br>最优路径问题</p><p>project3 马尔可夫模型 手语字符转化为对应的英文文本</p><p>Navigation 导航 A*<br>智能体 动态交互<br>棋盘的状态 搜索树 剪枝<br>对抗搜索 Mini-Max</p><p>Monty Hall三门问题<br>switch<br>先验概率 P(A) = P(B) = P(C) = 1/3<br>后验概率 P(B|open_B) = 0<br>贝叶斯定理<br>P(C|open_B) = P(open_B|C) * P(C) / P(open_B)  = 1 * 1/3 / 1/2 = 2/3</p><p>智能的定义是什么？<br>Agent, Enviroment, State<br>智能体：是指会根据给定目标采取行动，最大化其预期效用的事物<br>Perception, Action, Cognition<br>感知： 智能体通过感知环境属性与环境互动<br>行为：输出行为通常会改变环境的状态<br>认知：智能体决定采取什么行动的过程，取决于感知输入，这个过程称为认知<br>我们对AI的大部分讨论都会集中在认知上，特别是推理和决策<br>有限最优性</p><p>Conda与pip相似，不同之处在于可用的软件包集中于数据科学，而pip则用于一般用途。<br><code>conda create -n env_name list of packages</code><br><code>conda create -n data python=3.6 numpy pandas</code><br><code>source activate env_name</code><br><code>conda list</code> 查看安装的packages<br><code>source deactivate</code></p><p>保存和加载环境<br><code>conda env export &gt; enviroment.yaml</code><br>write the exported text to a YAML file</p><p>从保存的环境文件创建行动环境<br><code>conda env create -f enviroment.yaml</code><br>create a new enviroment with the same listed in enviroment.yaml</p><p>移除环境<br><code>conda env remove -n env_name</code></p><p>windows配置Git环境变量<br><a href="https://blog.csdn.net/C_chuxin/article/details/87880332" target="_blank" rel="noopener">https://blog.csdn.net/C_chuxin/article/details/87880332</a></p><hr><p>搜索、逻辑、规划<br>概率、贝叶斯网络<br>Main topics:</p><ol><li>Adversarial Search</li><li>Minimax Algorithm</li><li>Alpha-Beta pruning</li><li>Evaluation Functions</li><li>Isolation Functions</li><li>Multi-player, probabilistic Games</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Udacity </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>HTML &amp; CSS</title>
+      <link href="/2020/08/11/HTML-CSS/"/>
+      <url>/2020/08/11/HTML-CSS/</url>
+      
+        <content type="html"><![CDATA[<p>树形结构<br>h1元素 <h1>This is a heading.</h1></p><p>This is a paragraph.</p>>标签 <h1> <p> <span> <image><p>This is a paragraph.</p><span>span1</span> 一行<span>span2</span><p>命令行启动sublime<br>MAC 打开终端输入下面的命令并回车即可<br>ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl</p><p>添加完系统变量之后，接下来你就可以在命令行里面利用subl命令直接使用Sublime Text了：<br>subl file : 使用Sublime Text打开file文件<br>subl folder : 使用Sublime Text打开folder文件夹<br>subl . : 使用Sublime Text当前文件夹</p><p>Chrome<br>cmd + o 打开文件<br>Cmd + R 刷新文件</p><p><tag>Content</tag><br>递归嵌套</p><div>    <h1>Article Title</h1>    <p>Paragraph of text.</p> </div><p>前往 MDN HTML 元素参考 中文网站 ，寻找你要使用的元素。<br>MDN (Mozilla Developer Network)<br>cmd + f 寻找关键字<br><b> bold 粗体 </b><br><em> emphasis 着重 </em></p><p>HTML文档模版<br><!DOCTYPE html> 描述HTML的类型</p><html>    <head>        Meta information goes here!        描述有关站点的元信息(例如标题)，         并提供网页正确渲染和交互，所需的脚本和样式表链接    <meta name="generator" content="Hexo 4.2.0"></head>    <body>        Content goes here!        描述用户将看到的网页上的实际内容    </body></html>   <!DOCTYPE html><html>    <head>        <meta charset="utf-8">        <title>This is a title</title>    </head>    <body>        <h1>Hello!</h1>    </body></html><p>按钮标签<br><button>一个按钮！</button></p><p>标题标签<br><!DOCTYPE html></p><html>    <head></head>    <body>        <p>            <h1>HomePage</h1>            <h2>Welcome to my website</h2>            <h3>about me</h3>            <h4>more</h4>            <span>SpaceX launched the Falcom Havey</span>        </p>    </body></html><p>列表标签<br><!DOCTYPE html></p><html>    <head>    </head>       <body>        <p>            <ul>                <li>HTML</li>                <li>CSS</li>                <li>JavaScript</li>            </ul>        </p>    </body></html>   <p>HTML树<br><!DOCTYPE html></p><html>    <head></head>       <body>        <h1>树形结构</h1>        <div>            <p>你可以使用树形结构整理HTML文件，使它们更具有条理</p>            <p>这不仅有利于可读性，还与CSS、JavaScript的风格和编程形式保持了一致</p>        </div>     </body></html><p>使用链接元素创建超链接<br><a href="www.google.com">谷歌</a><br>href代表“引用” </p><p>使用img元素创建图像 图像不需要结束标签<br><img src="http://somewensite.com/image.jpg" alt="short description"></p><!DOCTYPE html><html lang="en">    <head></head>    <body>        <p>            这里是一大段有关 Udacity 的文字。很酷！接下来是图像！        </p>        <img src="http://udacity.github.io/fend/images/udacity.png", alt="Udacity Logo">    </body></html><p>路径指南<br>绝对路径 ：世界上任何人都可以使用地址 1600 Pennsylvania Ave NW, Washington DC, USA 20006 找到美国白宫。街道地址是指向某地点的绝对路径。<br>相对路径 ：但如果你就在艾森豪行政大楼， 那么你还可以使用“隔壁大楼”来查找白宫。 “隔壁大楼”需要依赖当前位置，因此是一个相对路径。</p><p>本地文件<br>外部文件</p><p>本地路径<br>外部路径<br>相对路径</p><p>负责为你提供网站文件的计算机称为 <em>服务器</em><br>服务器具有任何人都可以访问的外部路径，这也正是 Web 的工作原理。<br>不同的网站只不过是不同的文件集合。每个网站其实都只是具有外部地址的服务器（或多个服务器）， 我们称外部地址为 URL</p><p>图片描述<br><!DOCTYPE html></p><html lang="en">    <head></head>    <body>        <figure>            <img src="redwoods_state_park.jpg" alt="redwoods">            <figcaption> readwoods_state_park.jpg</figcaption>        </figure>        <p> 斯托特纪念森林，杰迪戴亚·史密斯红木州立公园，2011 年，由 Chmee2 拍摄。GFDL 或 CC BY-SA 3.0，来自 Wikimedia Commons -             <a href="https://commons.wikimedia.org/wiki/File%3AStout_Memorial_Grove_in_Jedediah_Smith_Redwoods_State_Park_in_2011_(22).JPG" target="_blank" rel="noopener">source</a>        </p>    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body></html>]]></content>
+      
+      
+      <categories>
+          
+          <category> Udacity </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> html, css </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机视觉</title>
+      <link href="/2020/08/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+      <url>/2020/08/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Udacity </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>深度碎片</title>
+      <link href="/2020/08/08/%E6%B7%B1%E5%BA%A6%E7%A2%8E%E7%89%87/"/>
+      <url>/2020/08/08/%E6%B7%B1%E5%BA%A6%E7%A2%8E%E7%89%87/</url>
+      
+        <content type="html"><![CDATA[<p>np.squeeze() 去除单维度的条目</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>UdacityDL</title>
       <link href="/2020/07/29/UdacityDL/"/>
       <url>/2020/07/29/UdacityDL/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h3 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h3><p>什么是Anaconda ？<br>Anaconda实际上是conda，Python和150多个科学软件包及其依赖项附带的软件发行版。应用程序conda是程序包和环境管理器。</p><p>安装Anaconda<br>Anaconda is available for Windows, Mac OS X, and Linux. You can find the installers and installation instructions at <a href="https://www.anaconda.com/download/" target="_blank" rel="noopener">https://www.anaconda.com/download/</a>.</p><p>安装后，您将自动进入默认的conda环境，并安装了所有软件包，您可以通过在终端中输入<code>conda list</code>来检查自己的安装。</p><p>包管理<br>conda install numpy</p><p>创建环境<br>conda create -n env_name list of packages    (-n for name)<br>conda create -n my_env numpy<br>指定python版本<br>conda create -n py38 python=3.8</p><p>进入环境<br>source activate my_env  (OSX/Linux)<br>activate my_env  (Windows)</p><p>conda create -n data py36 python=3.6 numpy pandas</p><p>保存和加载环境<br><code>conda env export &gt; enviroment.yaml</code>  保存环境到yaml文件<br>conda env export<br><code>conda env create -f environment.yaml</code> 从yaml文件创建环境</p><p>环境列表<br>conda env list</p><p>移除环境<br>conda env remove -n env_name</p><h3 id="Jupyter-Notebook"><a href="#Jupyter-Notebook" class="headerlink" title="Jupyter Notebook"></a>Jupyter Notebook</h3>]]></content>
       
+      
+      <categories>
+          
+          <category> Udacity </category>
+          
+      </categories>
       
       
     </entry>
@@ -21,7 +116,7 @@
       <link href="/2020/07/28/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/"/>
       <url>/2020/07/28/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p> BFS代码模版<br> def BFS(graph, start, end):<br>     queue = []<br>     queue.append([start])<br>     visited.add(start)</p><pre><code>while queue:    node = queue.pop()    visited.add(node)    process(node)    nodes = generate_related_nodes(node)    queue.push(nodes)</code></pre>]]></content>
       
       
       
@@ -34,7 +129,7 @@
       <link href="/2020/07/28/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/"/>
       <url>/2020/07/28/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>示例代码<br>python<br>class TreeNode:<br>    def <strong>init</strong>(self, val):<br>        self.val = val;<br>        self.left, self.right = None, None</p><p>C++<br>Struct TreeNode {<br>    int val;<br>    TreeNode * left;<br>    TreeNode * right;<br>    TreeNode(int x) : val(x),left(NULL),right(NULL) {}<br>}</p><p>Java<br>public class TreeNode {<br>    public int val;<br>    public TreeNode left, right;</p><pre><code>public TreeNode(int val) {    this.val = val;    this.left = null;    this.right = null;}</code></pre><p>}</p><p>二叉树dsf 示例代码<br>def dsf(node):<br>    if node in visited:<br>        # already visited<br>        return</p><pre><code>visited.add(node)# process current node# ... # logic heredfs(node.left)dfs(node.right)</code></pre><p>多叉树dsf 示例代码<br>visited = set()<br>def dfs(node, visited):<br>    # terminator<br>    if node in visited:<br>        # already visited<br>        return </p><pre><code>visited.add(node);# process current node here# 遍历所有子节点for next_node in node.children:    if not next_node in visited:        dfs(next_node, visited)</code></pre><p>DFS非递归写法<br>def DFS(self, tree):<br>    if tree.root is None:<br>        return []</p><pre><code>visited, stack = [], [tree.root]while stack:    node = stack.pop()    visited.add(node)    process(node)    nodes = generate_related_nodes(node)    stack.push(nodes)# other processing work</code></pre>]]></content>
       
       
       
@@ -47,7 +142,7 @@
       <link href="/2020/07/23/%E9%80%92%E5%BD%92%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88/"/>
       <url>/2020/07/23/%E9%80%92%E5%BD%92%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88/</url>
       
-        <content type="html"><![CDATA[<p>def recursion(level, param1, param2, …):<br>    # recursion terminator<br>    if level &gt; MAX_LEVEL:<br>        process_result<br>        return</p><pre><code># process logic in current levelprocess(level, data...)# drill downself.recursion(level+1, p1, ...)# reverse the current level status if needed</code></pre>]]></content>
+        <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># python 递归模版</span><br><span class="line">def recursion(level, param1, param2, ...):</span><br><span class="line"># recursion terminator</span><br><span class="line">if level &gt; MAX_LEVEL:</span><br><span class="line">process_result</span><br><span class="line">return</span><br><span class="line"></span><br><span class="line"># process logic in current level</span><br><span class="line">process(level, data...)</span><br><span class="line"></span><br><span class="line"># drill down</span><br><span class="line">self.recursion(level+1, p1, ...)</span><br><span class="line"></span><br><span class="line"># reverse the current level status if needed</span><br></pre></td></tr></table></figure><p>// Java递归模版<br>public class recursionTemplate {<br>    public void recur(int level, int param) {</p><pre><code>    // terminator    if (level &gt; MAX_LEVEL) {        // process result        return;    }    // process current logic    process(level, param);    // drill down    recur(level: level + 1, newParam);    // restore current status}</code></pre><p>}</p>]]></content>
       
       
       
@@ -60,7 +155,7 @@
       <link href="/2020/07/23/%E5%88%86%E6%B2%BB%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88/"/>
       <url>/2020/07/23/%E5%88%86%E6%B2%BB%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>def divede_conquer(problem, param1, param2, …):<br>    # recursion terminator<br>    if problem is None:<br>        print_result<br>        return</p><pre><code># prepare datadata = prepare_data(problem)subproblems = split_problem(problem, data)# conquer subproblemssubresult1 = self.divede_conquer(subproblems[0], p1, ...)subresult2 = self.divede_conquer(subproblems[1], p1, ...)subresult3 = self.divede_conquer(subproblems[2], p1, ...)...# process and generate the final resultresult = process_result(subresult1, subresult2, subresult3, ...)</code></pre>]]></content>
       
       
       
@@ -73,9 +168,15 @@
       <link href="/2020/07/21/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%84%E4%B8%83%E4%B8%AA%E4%B9%A0%E6%83%AF/"/>
       <url>/2020/07/21/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%84%E4%B8%83%E4%B8%AA%E4%B9%A0%E6%83%AF/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>第一部分 思维方式与原则<br>    第一章 由内而外的造就自己<br>        付诸行动</p><pre><code>    Q1:你是否曾做出推测时发现自己的判断过于匆忙？请对这种经历加以描述。    在青岛的时候，没有很好地去体谅对方，对你一会不热情，你就以为人家不爱你，冲动地做出了一些傻事，    Q2:你当时做出的推测是什么？    因为是最后一晚在一起，为什么要抗拒我，这样的观点是错误的，两个人在一起可以做很多其他的有意义的事情    Q3:想一下你做过的其他推测。本周你将对其中某一项采取什么行动？    （一）检验你的思维方式    你曾经到过其他国家，或本国的其他地区吗？你觉得哪些事情是陌生的奇怪的？    最近的一次是青岛，当地人    人们的行为是否如你预期？你对他们的行为有何看法？    回想你的旅游经历，你认为当地人对你的看法如何？你是否认为他们对你的看法与你对他们的看法可能很类似？    如果你有机会在旅途中认识当地人，你对他们的看法或推测会有什么改变？    （二）转换你的思维方式    回想一下通往你的工作场所或你家的不同路径。是否有些路径比其他的更复杂？是否有时其中一条比其他的更方便？为什么方便，为什么不方便    你是否发现过一条你以前不知道的新路径？走不同的路径的新鲜感如何？    现在想一下你与他人打交道的方式。与他们打交道是否有好几种方式？你有可能尝试哪些新的方式？    （三）影响你生活的五个原则    请列出影响你的日常生活的五个原则。它们以怎样的方式影响你？它们是以积极还是消极的方式影响你的生活？    1.    2.    3.    4.    5.第二章 七个行动概论    付诸行动</code></pre><p>第二部分 个人领域的成功：从依赖到独立<br>    第三章 习惯一： 积极主动——个人愿景的原则<br>        付诸行动</p><pre><code>第四章 习惯二： 以始为终——自我领导的原则    付诸行动第五章 习惯三： 要事第一——自我管理的原则    付诸行动</code></pre><p>第三部分 公众领域的成功：从独立到互赖<br>    第六章 人际关系的本质<br>        付诸行动</p><pre><code>第七章 习惯四：双赢思维——人际领导的原则    付诸行动第八章 习惯五：知彼解己——移情沟通的原则    付诸行动第九章 习惯六：统合综效——创造性合作的原则    付诸行动</code></pre><p>第四部分 自我提升和完善<br>    第十章 习惯七：不断更新——平衡点自我提升法则<br>        付诸行动</p><pre><code>第十一章 再论由内而外造就自己    付诸行动</code></pre>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> books </tag>
+            
+        </tags>
       
     </entry>
     
@@ -86,7 +187,7 @@
       <link href="/2020/07/21/Java%E5%85%A5%E9%97%A8/"/>
       <url>/2020/07/21/Java%E5%85%A5%E9%97%A8/</url>
       
-        <content type="html"><![CDATA[<p>Java Dvelopment Kit (JDK)<br>    1. Java Runtime Enviroment (JRE)<br>        Includes the code behind all the variable types and built-in functions (ex. the println() function)<br>        包含所有变量类型和Java内置函数涉及的代码 比如println()函数</p><pre><code>    which allows Java code to run on any platform!    It also includes a Java Virtual Machine (JVM).    Runtime Enviroment 还含有一个Java虚拟机 该虚拟机可以从网上下载 可允许Java代码在任何计算机上运行 无论是Windows、Mac还是其它操作系统都可     很多电脑本身就装有Runtime Enviroment 因为计算机需要这个工具来运行网页里的Java应用程序    但是要开发我们自己的程序和Java应用，我们需要第二个工具 也就是Java编译器2. a Java compiler (javac)    A compiler is a special type of program that translates programing language code into code that a computer can excute    Program code --in--&gt; Compiler ---out--&gt; Translated code    Java Code -&gt; Compiler(javac) -&gt; Bytecode -&gt; Java Virtual Machine -&gt; Machine Code </code></pre><p>在编辑器中编写Java代码<br>    subl HelloWorld.java<br>    // 保存文件时 文件名应与类名相同<br>    public class HelloWorld {<br>        // class 在Java中是用来存放函数和代码并关联程序的<br>        public static void main(String[] args) {<br>            System.out.println(“Hello world!”);<br>        }<br>    }</p><p>在terminal中运行Java代码的流程<br>    1. javac 代码文件名.java<br>        对代码进行编译 生成class文件<br>    2. java 文件名<br>        执行java程序<br>    在编辑器修改代码后 需要重新编译</p><p>Java集成开发环境 Intellij<br>Debug<br>    断点<br>    step over<br>    resume<br>    step into<br>    step out</p><p>自动生成注释<br><a href="https://blog.csdn.net/qq_34581118/article/details/78409782" target="_blank" rel="noopener">https://blog.csdn.net/qq_34581118/article/details/78409782</a></p>]]></content>
+        <content type="html"><![CDATA[<p>Java Dvelopment Kit (JDK)<br>    1. Java Runtime Enviroment (JRE)<br>        Includes the code behind all the variable types and built-in functions (ex. the println() function)<br>        包含所有变量类型和Java内置函数涉及的代码 比如println()函数</p><pre><code>    which allows Java code to run on any platform!    It also includes a Java Virtual Machine (JVM).    Runtime Enviroment 还含有一个Java虚拟机 该虚拟机可以从网上下载 可允许Java代码在任何计算机上运行 无论是Windows、Mac还是其它操作系统都可     很多电脑本身就装有Runtime Enviroment 因为计算机需要这个工具来运行网页里的Java应用程序    但是要开发我们自己的程序和Java应用，我们需要第二个工具 也就是Java编译器2. a Java compiler (javac)    A compiler is a special type of program that translates programing language code into code that a computer can excute    Program code --in--&gt; Compiler ---out--&gt; Translated code    Java Code -&gt; Compiler(javac) -&gt; Bytecode -&gt; Java Virtual Machine -&gt; Machine Code </code></pre><p>在编辑器中编写Java代码<br>    subl HelloWorld.java<br>    // 保存文件时 文件名应与类名相同<br>    public class HelloWorld {<br>        // class 在Java中是用来存放函数和代码并关联程序的<br>        public static void main(String[] args) {<br>            System.out.println(“Hello world!”);<br>        }<br>    }</p><p>在terminal中运行Java代码的流程<br>    1. javac 代码文件名.java<br>        对代码进行编译 生成class文件<br>    2. java 文件名<br>        执行java程序<br>    在编辑器修改代码后 需要重新编译</p><p>Java集成开发环境 Intellij<br>Debug<br>    断点<br>    step over<br>    resume<br>    step into<br>    step out</p><p>自动生成注释</p><p><a href="https://blog.csdn.net/qq_34581118/article/details/78409782" target="_blank" rel="noopener">https://blog.csdn.net/qq_34581118/article/details/78409782</a></p><p>ctrl + j 查看方法文档</p><p>static 表示它不需要对象就能运行，因此计算机在创建任何对象之前，会从该方法开始<br>构造方法：是特殊的方法，负责为该类创建和初始化对象<br>    1. 构造方法没有任何返回类型<br>    2. 构造方法的名称和类本身的名称一样</p><p>默认构造函数<br>参数化构造函数<br>class Game{<br>    int score;</p><pre><code>// Default constructorGame() {    score = 0;}// Constructor by starting score valueGame(int startingScore) {    score = startingScore;}</code></pre><p>}</p><p>// 访问构造方法<br>new关键字 要创建特定类的对象，你需要使用 new 关键字，后面是要使用的构造方法<br>Game tetris = new Game(); // 调用默认构造函数<br>Game darts = new Game(100); // 调用带参构造函数</p>]]></content>
       
       
       
@@ -105,7 +206,7 @@
       <link href="/2020/07/19/%E6%9E%81%E5%AE%A2%E5%A4%A7%E5%AD%A6%E4%BD%9C%E4%B8%9A%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B/"/>
       <url>/2020/07/19/%E6%9E%81%E5%AE%A2%E5%A4%A7%E5%AD%A6%E4%BD%9C%E4%B8%9A%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B/</url>
       
-        <content type="html"><![CDATA[<p>git add .<br>git commit -m “week0X assignment”<br>git push -u origin master</p><p>将对应的链接复制到原始仓库的issue</p><p>#学号:G20200343090088<br>#姓名:张文胜<br>#班级:12期2班<br>#语言:java<br>#作业&amp;总结链接:<a href="https://github.com/VincentCheungKokomo/algorithm012/tree/master/Week_02" target="_blank" rel="noopener">https://github.com/VincentCheungKokomo/algorithm012/tree/master/Week_02</a></p>]]></content>
+        <content type="html"><![CDATA[<p>git add .<br>git commit -m “week0X assignment”<br>git push -u origin master</p><p>将对应的链接复制到原始仓库的issue</p><p>#学号:G20200343090088<br>#姓名:张文胜<br>#班级:12期2班<br>#语言:java<br>#作业&amp;总结链接: <a href="https://github.com/VincentCheungKokomo/algorithm012/tree/master/Week_02" target="_blank" rel="noopener">https://github.com/VincentCheungKokomo/algorithm012/tree/master/Week_02</a></p>]]></content>
       
       
       
@@ -188,7 +289,7 @@
       <link href="/2020/06/22/%E3%80%8A%E6%88%91%E4%B8%BA%E4%BD%95%E8%80%8C%E7%94%9F%E3%80%8B/"/>
       <url>/2020/06/22/%E3%80%8A%E6%88%91%E4%B8%BA%E4%BD%95%E8%80%8C%E7%94%9F%E3%80%8B/</url>
       
-        <content type="html"><![CDATA[<p>我为何而生<br>伯特兰·罗素</p><p>有三种情感，单纯而强烈，支配着我的一生：对爱情的渴望，对知识的追求，以及对人类苦难不可遏制的同情。这些感情如阵阵巨风，挟卷着我在漂泊不定的路途中东飘西荡，飞越苦闷的汪洋大海，直抵绝望的边缘。</p><p>我之所以追寻爱情，首先，爱情使人心醉神迷，如此美妙的感觉，以致使我时常为了体验几小时爱的喜悦，而宁愿献出生命中其它一切；其次，爱情可以解除孤独，身历那种可怕孤寂的人的战栗意识，会穿过世界的边缘，直望入冰冷死寂的无底深渊；最后，置身于爱的结合，我在一个神秘缩影中看到了圣贤与诗人们所预想的天堂。这正是我所追寻的，尽管它对于人类的生活或许太过美好，却是我的最终发现。</p><p>我也以同样的热情追求知识。我渴望理解人类的心灵，渴望知道星辰为何闪耀，我还试图领略毕达哥拉斯关于哪些数字在变迁之上保持着永恒的智慧。在这一方面，我取得了一点成果，但并不算多。</p><p>爱情与知识，尽其可能，引领着我通往天堂；然而怜悯总是把我带回现实。那些痛苦的呼唤在我内心深处回响。饥饿中的孩子，被压迫和折磨的人们，给子女造成重担的无助老人，以及孤独、贫穷和痛苦的整个世界，都是对人类理想生活的嘲讽。我渴望能减少这些不幸，但无能为力，这也是我的痛苦。</p><p>这就是我的一生。我发现人生是值得的；而且如果能够再有一次这样的机会，我会欣然接受。</p>]]></content>
+        <content type="html"><![CDATA[<p>《我为何而生》<br>罗素</p><p>有三种情感，单纯而强烈，支配着我的一生：对爱情的渴望，对知识的追求，以及对人类苦难不可遏制的同情。这些感情如阵阵巨风，挟卷着我在漂泊不定的路途中东飘西荡，飞越苦闷的汪洋大海，直抵绝望的边缘。</p><p>我之所以追寻爱情，首先，爱情使人心醉神迷，如此美妙的感觉，以致使我时常为了体验几小时爱的喜悦，而宁愿献出生命中其它一切；其次，爱情可以解除孤独，身历那种可怕孤寂的人的战栗意识，会穿过世界的边缘，直望入冰冷死寂的无底深渊；最后，置身于爱的结合，我在一个神秘缩影中看到了圣贤与诗人们所预想的天堂。这正是我所追寻的，尽管它对于人类的生活或许太过美好，却是我的最终发现。</p><p>我也以同样的热情追求知识。我渴望理解人类的心灵，渴望知道星辰为何闪耀，我还试图领略毕达哥拉斯关于哪些数字在变迁之上保持着永恒的智慧。在这一方面，我取得了一点成果，但并不算多。</p><p>爱情与知识，尽其可能，引领着我通往天堂；然而怜悯总是把我带回现实。那些痛苦的呼唤在我内心深处回响。饥饿中的孩子，被压迫和折磨的人们，给子女造成重担的无助老人，以及孤独、贫穷和痛苦的整个世界，都是对人类理想生活的嘲讽。我渴望能减少这些不幸，但无能为力，这也是我的痛苦。</p><p>这就是我的一生。我发现人生是值得的；而且如果能够再有一次这样的机会，我会欣然接受。</p>]]></content>
       
       
       
@@ -201,7 +302,7 @@
       <link href="/2020/06/15/MQTTS%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/"/>
       <url>/2020/06/15/MQTTS%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="创建产品"><a href="#创建产品" class="headerlink" title="创建产品"></a>创建产品</h1><p>产品 - 设备 - 数据流 - 数据点<br>产品ID: 354482<br>access_key: qeRqUb9LL2CuMKC5l5ErRr8mn60L4l5i35DCby+FPfA=<br>设备名称: drone3<br>drone3 key: bmUyIBGYHenGjGlByIkr9eGQC5W4qeZdEyTV9mIujFg=<br>token: 由python代码生成<br>version=2018-10-31&amp;res=products%2F354482%2Fdevices%2Fdrone3&amp;et=1592213387&amp;method=sha1&amp;sign=HlpuhfMQ8gih6YYI7mIUf8n%2BU8E%3D<br>MQTTS客户端 MQTT.fx</p><h1 id="数据点上传"><a href="#数据点上传" class="headerlink" title="数据点上传"></a>数据点上传</h1><p>topic:<br>    <code>$sys/{pid}/{device-name}/dp/post/json</code><br>    <code>$sys/354482/drone3/dp/post/json</code><br>    $sys/354482/drone3/dp/post/json/accepted<br>    $sys/354482/drone3/dp/post/json/rejected</p><h1 id="命令下发topic"><a href="#命令下发topic" class="headerlink" title="命令下发topic"></a>命令下发topic</h1><pre><code>`$sys/{pid}/{device-name}/cmd/#`  #表示与命令相关$sys/354482/drone3/cmd/#</code></pre>]]></content>
       
       
       
@@ -214,8 +315,14 @@
       <link href="/2020/06/10/%E9%93%BE%E8%A1%A8/"/>
       <url>/2020/06/10/%E9%93%BE%E8%A1%A8/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p><img src="%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5" alt="Alt text" title="optional title"><br>Alt text：图片的Alt标签，用来描述图片的关键词，可以不写。<br>最初的本意是当图片因为某种原因不能被显示时而出现的替代文字，后来又被用于SEO，<br>可以方便搜索引擎根据Alt text里面的关键词搜索到图片。<br>图片链接：可以是图片的本地地址或者是网址。<br>“optional title”：鼠标悬置于图片上会出现的标题文字，可以不写。</p><p><img src="https://api2.mubu.com/v3/document_image/d32a5a67-816d-4f29-898d-99ae13c45d20-6168853.jpg" alt="链表逆置"></p><p>1-a 链表逆置 leetcode 206 Reverse Linked List<br>步骤：</p><ol><li>备份 head-&gt;next</li><li>修改 head-&gt;next</li><li>移动head与new_head</li></ol><h1 id="include-lt-stdio-h-gt"><a href="#include-lt-stdio-h-gt" class="headerlink" title="include &lt;stdio.h&gt;"></a>include &lt;stdio.h&gt;</h1><p>struct ListNode{<br>    int val; // 存储元素的数据域<br>    ListNode* next; // 存储下一个结点地址的指针域<br>    ListNode(int x) : val(x), next(NULL) {}<br>};</p><p>class Solution{<br>public:<br>    ListNode* reverseList(ListNode* head){<br>        ListNode* new_head = NULL; // 指向❤新链表头结点的指针<br>        while(head){<br>            // 1 备份 head-&gt;next<br>            ListNode* next = head-&gt;next;<br>            // 2.修改 head-&gt;next<br>            head-&gt;next = new_head;<br>            // 3. 移动head与new_head<br>            new_head = head;<br>            head = next; //遍历链表<br>        }<br>        return new_head; // 返回新链表头结点<br>    }<br>};</p><p>int main(){<br>    // 生存链表节点<br>    ListNode a(1);<br>    ListNode b(2);<br>    ListNode c(3);<br>    ListNode d(4);<br>    ListNode e(5);<br>    // 将节点简单的链接， 进行测试<br>    // 无需构造简单的链表操作（插入、删除）<br>    a.next = &b;<br>    b.next = &c;<br>    c.next = &d;<br>    d.next = &e;</p><pre><code>Solution solve;ListNode* head  = &amp;a;printf(&quot;Before reverse:\n&quot;);while (head){    printf(&quot;%d &quot;, head-&gt;val);    head = head-&gt;next;}printf(&quot;\n&quot;);head = solve.reverseList(&amp;a);printf(&quot;After reverse:\n&quot;);while (head){    printf(&quot;%d &quot;, head-&gt;val);    head = head-&gt;next;}return 0;</code></pre><p>}</p><p>// 链表逆序-b LeetCode 92 Reverse Linked List 2</p><p>class Solution{<br>public:<br>    ListNode* reverseBetween(ListNode* head, int m, int n){<br>        //计算需要逆置的节点个数<br>        int change_len = n - m + 1;<br>        // step1 找到开始逆置的节点， 记录该节点前驱和该节点<br>        // 初始化开始逆置的节点的前驱<br>        ListNode* pre_head = NULL;<br>        // 最终转换后的链表头结点，非特殊情况即为head<br>        ListNode* result = head;<br>        while(head &amp;&amp; –m){<br>            //将head向前移动m-1个位置<br>            pre_head = head; //记录head的前驱<br>            head = head-&gt;next;<br>        }</p><pre><code>    //将modify_list_tail指向当前的head，即逆置后的链表尾    ListNode * modeify_list_tail = head;    ListNode * new_head = NULL;    // step2 从head开始，逆置change_len = n-m+1个节点    while(head &amp;&amp; change_len){        // 逆置change_len个节点        ListNode * next = head-&gt;next;        head-&gt;next = new_head;        new_head = head;        head = next;        change_len--; //每完成一个节点逆置，change_len--    }    // step3 将pre_head与new_head连接，modeify_list_tail与head相连    modeify_list_tail-&gt;next = head; //连接逆置后的链表尾与逆置段的后一节点    if(pre_head){    // 如果pre_head不空，说明不是从第一个节点开始逆置的m&gt;1        pre_head-&gt;next = new_head; // 将逆置链表开始的节点前驱与逆置后的头结点连接    }else{        result = new_head; // 如果pre_head为空，说明m==1从第一个节点开始逆置，结果即为逆置后的头结点    }    return result;}</code></pre><p>};</p><p>例2: 求两个链表第一个的交点 160<br>方法1的必备知识（set的使用）</p><p>#include <set> //STL set的使用</p><p>// O(nlogn)或O(n)的方法判断两数组是否有相同元素<br>int main(){<br>    std::set<int> test_set;  //STL set<br>    const int A_LEN = 7;<br>    const int B_LEN = 8;</p><pre><code>int a[A_LEN] = [5, 1, 4, 8, 10, 1, 3];int b[B_LEN] = [2, 7, 6, 3, 1, 6, 0, 1];for(int i=0; i &lt; A_LEN; i++){    test_set.insert(a[i]); // 将数组a的元素插入set}for(int i=0; i &lt; B_LEN; i++){    if(test_set.find(b[i]) != test_set.end()){        printf(&quot;b[%d] = %d in array A.&quot;, i, b[i]);    }}return 0;</code></pre><p>}</p><p>// 方法1 O(nlogn) O(n)<br>class Solution{<br>public:<br>    ListNode <em>getIntersectionNode(ListNode *headA, ListNode *headB){<br>        std::set&lt;ListNode</em>&gt; node_set; // 设置查找集合node_set<br>        while(headA){<br>            node_set.insert(headA); // 将链表A中的节点地址插入node_set<br>            headA = headA-&gt;next; // 遍历链表A<br>        }<br>        while(headB){<br>            if(node_set.find(headB) != node_set.end()){<br>                return headB; // 当在headB中找到第一个出现在node_set中的节点时<br>            }<br>            headB = headB-&gt;next; // 遍历链表B<br>        }<br>        return NULL;<br>    }<br>};</p><p>// 方法2 O(n) O(1)<br>// 遍历链表， 计算链表长度<br>int get_list_length(ListNode *head){<br>    int len = 0;<br>    while(head){<br>        len++;<br>        head = head-&gt;next;<br>    }<br>    return len;<br>}</p><p>ListNode* forward_long_list(int long_len, int short_len, ListNode* head){<br>    int delta = long_len - short_len;<br>    // 将指针向前移动至多出节点个数后面的位置<br>    while(head &amp;&amp; delta){<br>        head = head-&gt;next;<br>        delta–;<br>    }<br>    return head; // 返回两链表等长时， 较长链表指针所指的位置<br>}</p><p>class Solution{<br>public:<br>    ListNode* getIntersectionNode(ListNode* headA, ListNode *headB){<br>        //求A, B两个链表长度<br>        int list_A_len = get_list_length(headA);<br>        int list_B_len = get_list_length(headB);<br>        if(list_A_len &gt; list_B_len){<br>            // 如果链表A长， 移动headA到对应位置<br>            headA = forward_long_list(list_A_len, list_B_len, headA);<br>        }else{// 如果链表B长， 移动headB到对应位置<br>            headB = forward_long_list(list_B_len, list_A_len, headB);<br>        }<br>        while(headA &amp;&amp; headB){<br>            if(headA == headB){ // 当两指针指向了同一个节点时，说明找到了<br>                return headA;<br>            }<br>            headA = headA-&gt;next;<br>            headB = headB-&gt;next;<br>        }<br>        return NULL;<br>    }<br>};</p><p>int main(){</p><pre><code>ListNode a1(1);ListNode a2(2);ListNode b1(3);ListNode b2(4);ListNode b3(5);ListNode c1(6);ListNode c2(7);ListNode c3(8);a1.next = &amp;a2;a2.next = &amp;c1;b1.next = &amp;b2;b2.next = &amp;b3;b3.next = &amp;c1;c1.next = &amp;c2;c2.next = &amp;c3;Solution solve;ListNode* result = solve.getIntersectionNode(&amp;a1, &amp;b1);printf(&quot;%d\n&quot;, result-&gt;val);return 0;</code></pre><p>}</p><p>例3 链表求环 141/ 142 已知链表中可能存在环，若有环返回环起始节点，否则返回NULL<br>思路一<br>class Solution{<br>public:<br>    ListNode* detectCycle(ListNode* head){<br>        std::set&lt;ListNode *&gt; node_set; //设置node_set<br>        while(head){// 遍历链表<br>            if(node_set.find(head) != node_set.end()){<br>                // 如果在node_set已经出现了<br>                return head;<br>            }<br>            node_set.insert(head); // 将节点插入node_set<br>            head = head-&gt;next;<br>        }<br>        return NULL; // 没有遇到环，则返回NULL<br>    }<br>};</p><p>思路2 快慢指针 相遇则有环 相遇节点为meet，<br>分别从head与meet以同样的速度出发，第一次相遇的节点为环开始的起点</p><p>class Solution{<br>public:<br>    ListNode* detectCycle(ListNode* head){<br>        ListNode* fast = head; // 快指针<br>        ListNode* slow = head; // 慢指针<br>        ListNode* meet = NULL; // 相遇的节点<br>        while(fast){<br>            // slow与fast先各走一步<br>            slow = slow-&gt;next;<br>            fast = fast-&gt;next;<br>            if(!fast){ // 如果fast遇到链表尾，则返回NULL<br>                return NULL;<br>            }<br>            fast = fast-&gt;next; // fast再走一步<br>            if(fast == slow){<br>                meet = fast; // fast与slow相遇，记录相遇位置<br>                break;<br>            }<br>        }</p><pre><code>    if(meet == NULL){        return NULL; // 如果没有相遇，则证明无环    }    // 分别从head与meet以同样的速度出发，第一次相遇的节点为环开始的起点    while(head &amp;&amp; meet){        if(head == meet){ //当head与meet相遇，则说明遇到环的起始位置            return head;        }        head = head-&gt;next; // head与meet每次走一步        meet = meet-&gt;next;    }    return NULL;}</code></pre><p>};</p><p>int main(){<br>    ListNode a(1);<br>    ListNode b(2);<br>    ListNode c(3);<br>    ListNode d(4);<br>    ListNode e(5);<br>    ListNode f(6);<br>    ListNode g(7);</p><pre><code>a.next = &amp;b; b.next = &amp;c;c.next = &amp;d;d.next = &amp;e;e.next = &amp;f;f.next = &amp;g;g.next = &amp;c; // 环的第一个节点Solution solve;ListNode* node = solve.detectCycle(&amp;a);if(node){    printf(&quot;%d\n&quot;, node-&gt;val);}else{    printf(&quot;NULL\n&quot;);}return 0;</code></pre><p>}</p><p>例4 链表划分 86 <em>*<br>class Solution{<br>public:<br>    ListNode</em> partition(ListNode* head, int x){<br>        // 设置两个临时的头结点<br>        ListNode less_head(0);<br>        ListNode more_head(0);<br>        // 对应指针指向这两个头结点<br>        ListNode* less_ptr = &less_head;<br>        ListNode* more_ptr = &more_head;</p><pre><code>    while(head){        if(head-&gt;val &lt; x){ // 如果节点值小于x，则将该节点插入less_ptr后            less_ptr-&gt;next = head;            less_ptr = head;        }else{ // 否则将该节点插入more_ptr后            more_ptr-&gt;next = head;            more_ptr = head;        }        head = head-&gt;next; // 遍历链表    }    less_ptr-&gt;next = more_head.next;    more_ptr-&gt;next = NULL; // 将more_ptr即链表尾节点next置空    return less_head.next; // less_head的next节点即为新链表头结点，返回}</code></pre><p>};</p><p>int main(){<br>    ListNode a(1);<br>    ListNode b(4);<br>    ListNode c(3);<br>    ListNode d(2);<br>    ListNode e(5);<br>    ListNode f(2);</p><pre><code>a.next = &amp;b; b.next = &amp;c;c.next = &amp;d;d.next = &amp;e;e.next = &amp;f;Solution solve;ListNode* head = solve.partition(&amp;a, 3);while(head){    printf(&quot;%d\n&quot;, head-&gt;val);    head = head-&gt;next;}return 0;</code></pre><p>}</p><p>例5 复杂的链表的深度拷贝 138 ***</p><p>// 必备知识<br>#include &lt;stdio.h&gt;<br>#include <map> // STL map头文件<br>struct RandomListNode{<br>    int label;<br>    RandomListNode *next, *random;<br>    RandomListNode(int x) : label(x), next(NULL), random(NULL){}<br>}</p><p>int main(){<br>    std::map&lt;RandomListNode*, int&gt; node_map; // 将节点地址映射成ID<br>    RandomListNode a(5);<br>    RandomListNode b(3);<br>    RandomListNode c(6);</p><pre><code>a.next = &amp;b;b.next = &amp;c;a.random = &amp;c;b.random = &amp;a;c.random = &amp;c;node_map[&amp;a] = 1;node_map[&amp;b] = 2;node_map[&amp;c] = 3;printf(&quot;a.random id = %d\n&quot;, node_map[a.random]);printf(&quot;b.random id = %d\n&quot;, node_map[b.random]);printf(&quot;c.random id = %d\n&quot;, node_map[c.random]);return 0;</code></pre><p>}</p><p>class Solution{<br>public:<br>    RandomListNode* copyRandomList(RandomListNode* head){<br>        std::map&lt;RandomListNode<em>, int&gt; node_map; // 地址到节点位置的map<br>        std::vector&lt;RandomListNode</em>&gt; node_vec; // 使用vector根据存储节点位置访问地址<br>        RandomListNode* ptr = head;<br>        int i = 0;<br>        while(ptr){<br>            // 将新链表节点push入node_vec，生成了新链表节点位置到地址的map<br>            node_vec.push_back(new RandomListNode(ptr-&gt;label));<br>            node_map[ptr] = i; // 记录原始链表地址至节点位置的node_map<br>            ptr = ptr-&gt;next; // 遍历链表<br>            i++;<br>        }</p><pre><code>    node_vec.push_back(0);    ptr = head;    i = 0;    // 再次遍历原始列表 连接新链表的next指针、random指针    while(ptr){        // 连接新链表指针        node_vec[i]-&gt;next = node_vec[i+1];        if(ptr-&gt;random){            int id = node_map[ptr-&gt;random]; // 根据node_map确认            node_vec[i]-&gt;random = node_vec[id]; // 原链表random指针指向的位置即id        }        ptr = ptr-&gt;next;        i++;    }    //返回是深度拷贝后的链表    // 深度拷贝：构造生存一个完全新的链表，即使将原链表毁坏，新链表可独立使用    return node_vec[0];}</code></pre><p>};</p>]]></content>
       
+      
+      <categories>
+          
+          <category> LeetCode </category>
+          
+      </categories>
       
       
     </entry>
@@ -398,7 +505,7 @@
       <link href="/2020/05/18/%E3%80%8A%E9%97%A8%E5%89%8D%E3%80%8B/"/>
       <url>/2020/05/18/%E3%80%8A%E9%97%A8%E5%89%8D%E3%80%8B/</url>
       
-        <content type="html"><![CDATA[<pre><code>门前--顾城</code></pre><p>我多么希望，有一个门口<br>早晨，阳光照在草上</p><p>我们站着<br>扶着自己的门扇<br>门很低，但太阳是明亮的</p><p>草在结它的种子<br>风在摇它的叶子<br>我们站着，不说话<br>就十分美好</p><p>有门，不用开开<br>是我们的，就十分美好</p><p>早晨，黑夜还要流浪<br>我们把六弦琴交给他<br>我们不走了</p><p>我们需要土地<br>需要永不毁灭的土地<br>我们要乘着它<br>度过一生</p><p>土地是粗糙的，有时狭隘<br>然而，它有历史<br>有一份天空，一份月亮<br>一份露水和早晨</p><p>我们爱土地<br>我们站着<br>用木鞋挖着泥土<br>门也晒热了<br>我们轻轻靠着，十分美好</p><p>墙后的草<br>不会再长大了，<br>它只用指尖，触了触阳光</p>]]></content>
+        <content type="html"><![CDATA[<pre><code>《门前》 顾城</code></pre><p>我多么希望，有一个门口<br>早晨，阳光照在草上</p><p>我们站着<br>扶着自己的门扇<br>门很低，但太阳是明亮的</p><p>草在结它的种子<br>风在摇它的叶子<br>我们站着，不说话<br>就十分美好</p><p>有门，不用开开<br>是我们的，就十分美好</p><p>早晨，黑夜还要流浪<br>我们把六弦琴交给他<br>我们不走了</p><p>我们需要土地<br>需要永不毁灭的土地<br>我们要乘着它<br>度过一生</p><p>土地是粗糙的，有时狭隘<br>然而，它有历史<br>有一份天空，一份月亮<br>一份露水和早晨</p><p>我们爱土地<br>我们站着<br>用木鞋挖着泥土<br>门也晒热了<br>我们轻轻靠着，十分美好</p><p>墙后的草<br>不会再长大了<br>它只用指尖，触了触阳光</p>]]></content>
       
       
       
@@ -461,7 +568,7 @@
       <link href="/2020/05/18/%E3%80%8A%E4%B8%80%E5%89%AA%E6%A2%85%C2%B7%E9%9B%A8%E6%89%93%E6%A2%A8%E8%8A%B1%E6%B7%B1%E9%97%AD%E9%97%A8%E3%80%8B/"/>
       <url>/2020/05/18/%E3%80%8A%E4%B8%80%E5%89%AA%E6%A2%85%C2%B7%E9%9B%A8%E6%89%93%E6%A2%A8%E8%8A%B1%E6%B7%B1%E9%97%AD%E9%97%A8%E3%80%8B/</url>
       
-        <content type="html"><![CDATA[<pre><code>一剪梅·雨打梨花深闭门    （明）唐寅</code></pre><p>雨打梨花深闭门，忘了青春，误了青春。<br>赏心乐事共谁论？花下销魂，月下销魂。<br>愁聚眉峰尽日颦，千点啼痕，万点啼痕。<br>晓看天色暮看云，行也思君，坐也思君。</p>]]></content>
+        <content type="html"><![CDATA[<pre><code>一剪梅·雨打梨花深闭门    （明）唐寅</code></pre><p>雨打梨花深闭门，忘了青春，误了青春。<br>赏心乐事共谁论？花下销魂，月下销魂。<br>愁聚眉峰尽日颦，千点啼痕，万点啼痕。<br>晓看天色暮看云，行也思君，坐也思君。</p><p>因为李子梅同学温柔善良，聪明可爱，所以我很喜欢她，就这样子</p>]]></content>
       
       
       
@@ -480,7 +587,7 @@
       <link href="/2020/05/17/%E3%80%8A%E6%88%91%E6%83%B3%E5%92%8C%E4%BD%A0%E8%99%9A%E5%BA%A6%E6%97%B6%E5%85%89%E3%80%8B/"/>
       <url>/2020/05/17/%E3%80%8A%E6%88%91%E6%83%B3%E5%92%8C%E4%BD%A0%E8%99%9A%E5%BA%A6%E6%97%B6%E5%85%89%E3%80%8B/</url>
       
-        <content type="html"><![CDATA[<p>《我想和你虚度时光》<br>我想和你虚度时光，比如低头看鱼<br>比如把茶杯留在桌子上，离开<br>浪费它们好看的阴影</p><p>我还想连落日一起浪费，比如散步<br>一直消磨到星光满天<br>我还要浪费风起的时候<br>坐在走廊发呆，直到你眼中乌云<br>全部被吹到窗外</p><a id="more"></a><p>我已经虚度了世界，它经过我<br>疲倦，又像从未被爱过<br>但是明天我还要这样，虚度<br>满目的花草，生活应该像它们一样美好<br>一样无意义，像被虚度的电影</p><p>那些绝望的爱和赴死<br>为我们带来短暂的沉默<br>我想和你互相浪费<br>一起虚度短的沉默，长的无意义<br>一起消磨精致而苍老的宇宙</p><p>比如靠在栏杆上，低头看水的镜子<br>直到所有被虚度的事物<br>在我们身后，长出薄薄的翅膀</p>]]></content>
+        <content type="html"><![CDATA[<p>《我想和你虚度时光》<br>我想和你虚度时光，比如低头看鱼<br>比如把茶杯留在桌子上，离开<br>浪费它们好看的阴影</p><p>我还想连落日一起浪费，比如散步<br>一直消磨到星光满天<br>我还要浪费风起的时候<br>坐在走廊发呆，直到你眼中乌云<br>全部被吹到窗外 </p><a id="more"></a><p>我已经虚度了世界，它经过我<br>疲倦，又像从未被爱过<br>但是明天我还要这样，虚度<br>满目的花草，生活应该像它们一样美好<br>一样无意义，像被虚度的电影</p><p>那些绝望的爱和赴死<br>为我们带来短暂的沉默<br>我想和你互相浪费<br>一起虚度短的沉默，长的无意义<br>一起消磨精致而苍老的宇宙</p><p>比如靠在栏杆上，低头看水的镜子<br>直到所有被虚度的事物<br>在我们身后，长出薄薄的翅膀</p>]]></content>
       
       
       <categories>
@@ -669,7 +776,7 @@
       <link href="/2020/04/28/nest/"/>
       <url>/2020/04/28/nest/</url>
       
-        <content type="html"><![CDATA[<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><pre><code>Conda(Linux/macOS    <figure class="highlight plain"><figcaption><span>create --name ENVNAME -c conda-forge nest-simulator</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate ENVNAME</span><br></pre></td></tr></table></figure>注意python的版本    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">which python</span><br><span class="line">which nest</span><br></pre></td></tr></table></figure>if something is missing, try    `conda install &lt;package&gt;`</code></pre>]]></content>
+        <content type="html"><![CDATA[<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><pre><code>Conda(Linux/macOS    <figure class="highlight plain"><figcaption><span>create --name ENVNAME -c conda-forge nest-simulator</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate ENVNAME</span><br></pre></td></tr></table></figure>注意python的版本    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">which python</span><br><span class="line">which nest</span><br></pre></td></tr></table></figure>if something is missing, try    `conda install &lt;package&gt;`</code></pre><h2 id="NEST-Documentation"><a href="#NEST-Documentation" class="headerlink" title="NEST Documentation"></a>NEST Documentation</h2><p>NEST is a simulator for spiking neural network models</p><ol><li>Models of information processing, in the visual or auditory cortex of mammals</li><li>Models of network activity dynamics, laminar cortical networks or balanced random networks</li><li>Models of learning and plasticity.</li></ol><h2 id="MUSIC-Interface"><a href="#MUSIC-Interface" class="headerlink" title="MUSIC Interface"></a>MUSIC Interface</h2><p>A standard by the INCF, allows the transmission of data between applications at runtime</p><p>MUSIC is an API allowing large scale neuron simulators using MPI<br>internally to exchange data during runtime. </p><p>MPI : 消息传递接口（英语：Message Passing Interface，缩写MPI）是一个并行计算的应用程序接口（API），常在超级电脑、电脑集群等非共享内存环境程序设计。</p><p>MUSIC provides mechanisms to transfer massive amounts of event information and continuous values<br>from one parallel application to another.</p><p>two most important components<br>    music library : ‘libmusic.a’<br>    music utility : ‘music’</p><ul><li>Getting started</li></ul><p>MUSIC proxies are devices, not regular neuron models</p>]]></content>
       
       
       
