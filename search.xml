@@ -4,13 +4,70 @@
   
     
     <entry>
-      <title>并查集</title>
-      <link href="/2020/08/22/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
-      <url>/2020/08/22/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+      <title>排序</title>
+      <link href="/2020/08/28/%E6%8E%92%E5%BA%8F/"/>
+      <url>/2020/08/28/%E6%8E%92%E5%BA%8F/</url>
+      
+        <content type="html"><![CDATA[<p>十大经典排序算法 动图演示<br><a href="https://www.cnblogs.com/onepixel/p/7674659.html" target="_blank" rel="noopener">https://www.cnblogs.com/onepixel/p/7674659.html</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>N皇后</title>
+      <link href="/2020/08/25/N%E7%9A%87%E5%90%8E/"/>
+      <url>/2020/08/25/N%E7%9A%87%E5%90%8E/</url>
       
         <content type="html"><![CDATA[]]></content>
       
       
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>位运算</title>
+      <link href="/2020/08/24/%E4%BD%8D%E8%BF%90%E7%AE%97/"/>
+      <url>/2020/08/24/%E4%BD%8D%E8%BF%90%E7%AE%97/</url>
+      
+        <content type="html"><![CDATA[<p>负数的二进制表示<br>十进制5在计算机中表示为 int类型占4个字节<br>00000000 00000000 00000000 00000101<br>那么-5在计算机中应该怎么表示呢？</p><p>在计算机中，<em>负数以其正值的补码形式表达</em><br>什么叫补码呢？这得从原码，反码说起。<br>原码：一个整数，按照绝对值大小转换成的二进制数，称为原码。<br>比如 00000000 00000000 00000000 00000101 是 5的 原码。<br>反码：将二进制数按位取反，所得的新二进制数称为原二进制数的反码。<br>原码 00000000 00000000 00000000 00000101<br>反码 11111111 11111111 11111111 11111010<br>补码 11111111 11111111 11111111 11111011<br>补码： 反码+1称为补码<br>所以， -5在计算机中表达为：<br>11111111 11111111 11111111 11111011<br>转换为16进制： 0xFFFFFFFB</p><p>-1在计算机中如何表示<br>1的原码<br>00000000 00000000 00000000 00000001<br>1的反码<br>11111111 11111111 11111111 11111110<br>补码<br>11111111 11111111 11111111 11111111<br>可见， -1在计算机里用二进制表达就是全1<br>16进制为：0xFFFFFF</p><p>内容来自：<a href="https://www.jianshu.com/p/6c518e7b4690" target="_blank" rel="noopener">https://www.jianshu.com/p/6c518e7b4690</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>并查集</title>
+      <link href="/2020/08/22/%E5%B9%B6%E6%9F%A5%E9%9B%86/"/>
+      <url>/2020/08/22/%E5%B9%B6%E6%9F%A5%E9%9B%86/</url>
+      
+        <content type="html"><![CDATA[<p>class UF {<br>    // 记录连通分量<br>    private int count<br>    // 节点x的父节点是parent[x]<br>    private int[] parent;<br>    // 新增一个数组来记录树的“重量” 为了避免造成树的不平衡<br>    private int[] size;</p><pre><code>/*构造函数， n为图的节点总数*/public UF(int n) {    // 一开始互不相通    this.count = n; // 连通分量的个数        // 父节点指针指向自己    parent = new int[n];    // 最初每棵树只有一个节点    // 重量应该初始化为1    size = new int[n];    for (int i=0; i&lt;n; i++) {        parent[i] = i;        size[i] = 1;  // 初始状态的节点个数为1    }}/* 将p和q连接 */public void union(int p, int q) {    int rootP = find(p);    int rootQ = find(q);    if (rootP == rootQ)         return;    // 将两棵树合并为一颗    // 小树接到大树下面，较平衡    if (size[rootP] &gt; size[rootQ]) {        parent[rootQ] = rootP;        size[rootP] += size[rootQ];    } else {        parent[rootP] = rootQ;        size[rootQ] += rootP;     }    count--; // 两个分量合二为一 }/* 返回某个节点x的根节点 */private int find(int x) {    // 根节点parent[x] == x    while (parent[x] != x) {        // 进行路径压缩        parent[x] = parent[parent[x]];        x = parent[x];    }    return x;}/* 判断p和q是否连通*/public boolean connected(int p, int q) {    int rootP = find(p);    int rootQ = find(q);    return rootP == rootQ;}/* 返回图中有多少个联通分量 */public int count() {    return count;}</code></pre><p>}</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
       
     </entry>
     
