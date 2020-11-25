@@ -112,7 +112,7 @@
 <meta property="og:site_name" content="Vincentの银河系漫游指南">
 <meta property="og:description" content="project1数独约束传播和搜索 project2 Build an AI that play gamesminimax alpha-beta pruning吃豆人BFS DFS A*最优路径问题 project3 马尔可夫模型 手语字符转化为对应的英文文本 Navigation 导航 A*智能体 动态交互棋盘的状态 搜索树 剪枝对抗搜索 Mini-Max Monty Hall三门问题switc">
 <meta property="article:published_time" content="2020-08-13T08:01:49.000Z">
-<meta property="article:modified_time" content="2020-08-14T12:42:29.495Z">
+<meta property="article:modified_time" content="2020-11-25T05:20:47.505Z">
 <meta property="article:author" content="Vincent Zhang">
 <meta name="twitter:card" content="summary">
 
@@ -450,6 +450,12 @@
 <li>Isolation Functions</li>
 <li>Multi-player, probabilistic Games</li>
 </ol>
+<p>——————————————————————————————————————<br>路径搜索<br>Definition of A problem<br>Initial State  -&gt; S0     开始的城市<br>Actions(S)     -&gt; {a1, a2, a3…}   可到达的城市的路径<br>Result(S, a)   -&gt; S’   （到达）新的城市<br>GoalTest(S)    -&gt; True|False 判断是否到达目标城市<br>Path Cost（Si -aj-&gt; Si+1 -aj+1-&gt; Si+2）–&gt; cost value(n) where i=0,1… j=1,2…  总的cost<br>Step Cost (S, a, S’) –&gt; n  单步cost</p>
+<p>Frontier 已访问的边界<br>Unexplored 未访问<br>Explored  已访问</p>
+<p>Tree Search<br>function Tree.Search(problem):<br>    frontier = {[initial]}<br>    loop:<br>        if frontier is empty:<br>            return FAIL<br>        path = remove.choice(frontier)<br>        s = path.end<br>        if s is a goal:<br>            return path<br>        for a in actions:<br>            add[path + a &gt; Result(s, a)] to frontier</p>
+<p>Breadth First Search<br>shortest path first</p>
+<p>Graph Search<br>function Graph.Search(problem):<br>    frontier = {[initial]};<br>    explored = {} // 记录已访问的节点<br>    loop:<br>        if frontier is empty:<br>            return FAIL<br>        path = remove.choice(frontier)<br>        s = path.end; add to explored<br>        if s is a goal:<br>            return path<br>        for a in actions:<br>            add [path + a -&gt; Result(s, a)] to frontier<br>            unless Result(s, a) in frontier or explored // 避免重复</p>
+<p>A*搜索算法</p>
 
       
     </div>
@@ -561,7 +567,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -583,7 +589,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
