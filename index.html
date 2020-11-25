@@ -410,7 +410,24 @@
       
         
           
-            
+            <p>目标检测ios示例<br>使用CocoaPods来下载TF Lite 库<br>CocoaPods简介:</p>
+<p>CocoaPods是一个用Ruby写的、负责管理iOS项目中第三方开源库的工具，CocoaPods能让我们集中的、统一管理第三方开源库，为我们节省设置和更新第三方开源库的时间。</p>
+<pre><code>CocoaPods安装
+参考 https://www.jianshu.com/p/f43b5964f582
+升级Ruby
+    ruby -v 查看ruby版本
+升级Ruby环境，首先需要安装rvm
+    curl -L get.rvm.io | bash -s stable 
+        报错 Failed to connect to raw.githubusercontent.com port 443: Connection refused error: Error: 7，
+        解决方法 https://blog.csdn.net/txl910514/article/details/105880125
+
+sudo gem update --system  更新gem
+sudo gem install cocoapods
+
+cd lite/examples/object_detection/ios/ 
+pod install
+在xcode中打开 ObjectDetection.xcworkspace
+但是得注册Apple Developer 用于开启ios设备的权限</code></pre>
           
         
       
