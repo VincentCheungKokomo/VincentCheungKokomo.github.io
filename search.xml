@@ -4,6 +4,96 @@
   
     
     <entry>
+      <title>VS code</title>
+      <link href="/2020/12/19/VS-code/"/>
+      <url>/2020/12/19/VS-code/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>labuladong_数据结构</title>
+      <link href="/2020/12/18/labuladong-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <url>/2020/12/18/labuladong-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+      
+        <content type="html"><![CDATA[<p>目标 200<br>算法和刷题的框架思维<br>    1 数据结构的存储方式<br>        顺序存储 数组<br>        链式存储 链表<br>    常见数据结构<br>        队列<br>        栈<br>        树<br>            数组实现<br>            链表实现<br>                二叉搜索树<br>                AVL树<br>                红黑树<br>                B树<br>                区间树<br>        图<br>            邻接表<br>            邻接矩阵<br>        散列表<br>    2 数据结构的基本操作<br>        访问<br>            增加<br>            删除<br>            查找<br>            更改</p><pre><code>    遍历        数组            线性  for / while                void traverse(int[] arr) {                    for (int i; i &lt; arr.length; i++) {                        // 迭代访问arr[i]                    }                }        链表            /* 基本的单链表节点 */            class ListNode {                int val;                ListNode next;            }            线性 for / while            void traverse(ListNode head) {                for (ListNode p = head; p != null; p = p.next) {                    // 迭代访问p.val                }            }            非线性 递归            void traverse(ListNode head) {                // 递归访问 head.val                traverse(head.next);            }        二叉树            /* 基本的二叉树节点 */            class TreeNode {                int val;                TreeNode left, right;                TreeNode(int val) {                    this.val = val;                }            }            递归遍历            void traverse(TreeNode root) {                traverse(root.left);                traverse(root.right);            }        N叉树            /* 基本的 N 叉树节点 */            class TreeNode {                int val;                TreeNode[] children;            }            void traverse(TreeNode root) {                for (TreeNode child : root.children)                    traverse(child)            }        图 N叉树的结合 + 环        bool数组 visited做标记3 刷题指南    先刷二叉树 培养思维框架 大部分算法技巧，本质上都是树的遍历问题    void traverse(TreeNode root) {        // 前序遍历        traverse(root.left);        // 中序遍历        traverse(root.right);        // 后序遍历    }    # 124 求二叉树中最大路径和    int oneSideMax(TreeNode* root) {        if (root == nullptr)             return 0;        int left = max(0, oneSideMax(root-&gt;left));        int right = max(0, oneSideMax(root-&gt;right));        return max(left, right) + root.val;    }    # 105 根据前序遍历和中序遍历的结果还原一棵二叉树    # 99 恢复一棵BST 二叉搜索树    void traverse(TreeNode* node) {        if (!node) return;        traverse(node-&gt;left);        if (node-&gt;val &lt; pre-&gt;val) {            s = (s == NULL) ? prev : s;            t = node;        }        prev = node;        traverse(node-&gt;right);    }    if else loop recursion JUMP     只要涉及递归的问题，都是树的问题。    动态规划解凑零钱问题    # 不过是一个N叉树的遍历问题而已    def dp(n):        for coin in coins:            dp(n - coin)    其实很多动态规划问题就是在遍历一颗树    回溯算法 就是N叉树的前后遍历问题    # N皇后问题 搜索状态空间    /* 提取出N叉树遍历框架 */    void backtrack(int[] nums, LinkedList&lt;Integer&gt; track) {        for (int i=0; i &lt; nums.length; i++) {            backtrack(nums, track);        }    }    先刷树的相关题目，试着从框架上看问题，而不要纠结于细节问题。    数据结构的基本存储方式就是链式和顺序两种，基本操作就是增删改查，遍历方式无非迭代和递归    树    回溯    动归    分治</code></pre><p>链表<br>// 单链表节点的结构<br>public class ListNode {<br>    int val;<br>    ListNode next;<br>    // 构造函数<br>    ListNode(int x) {<br>        val = x;<br>    }<br>}</p><p>链表反转</p><ol><li><p>递归反转整个链表<br>明确递归函数的定义： 输入一个节点 head，将「以 head 为起点」的链表反转，并返回反转之后的头结点。<br>ListNode reverse(ListNode head) {<br> if (head.next == null) return head;<br> ListNode last = reverse(head.next);<br> head.next.next = head;<br> head.next = null;<br> return last;<br>}</p></li><li><p>反转链表前N个节点<br>// 将链表的前 n 个节点反转（n &lt;= 链表长度）</p></li></ol><p>ListNode successor = null; // 后继节点<br>// 反转以head为起点的n个节点， 返回新的头节点<br>ListNode reverseN(ListNode head, int n) {<br>    if (n == 1) {<br>        // 记录n+1个节点<br>        successor = head.next;<br>        return head;<br>    }<br>    // 以head.next为起点， 需要反转前n-1个节点<br>    ListNode last = reverseN(head.next, n-1);<br>    head.next.next = head;<br>    // 让反转后的head节点和后面的节点连起来<br>    head.next = successor;<br>    return last;<br>}</p><ol start="3"><li>反转链表的一部分<br>ListNode reverseBetween(ListNode head, int m, int n) {<br> // base case<br> if (m == 1) {<pre><code>// 相当于反转前 n 个元素return reverseN(head, n);</code></pre> }<br> // 前进到反转的起点触发 base case<br> head.next = reverseBetween(head.next, m-1, n-1);<br> return head;<br>}</li></ol><p>// 反转以 a 为头结点的链表<br>ListNode reverse(ListNode a) {<br>    ListNode pre, cur, nxt;<br>    pre = null; cur = a; nxt = a;<br>    while (cur != null) {<br>        nxt = cur.next;<br>        // 逐个节点反转<br>        cur.next = pre;<br>        // 更新指针位置<br>        pre = cur; // 最后的值为最后的节点<br>        cur = nxt; // 最后的值为NULL<br>    }<br>    // 返回反转后的头节点<br>    return pre;<br>}</p><p>/** 反转区间 [a, b) 的元素，注意是左闭右开 */<br>ListNode reverse(ListNode a, ListNode b) {<br>    ListNode pre, cur, nxt;<br>    pre = null; cur = a, nxt = a;<br>    while (cur != b) {<br>        nxt = cur.next;<br>        cur.next = pre;<br>        pre = cur;<br>        cur = nxt;<br>    }<br>    return pre;<br>}</p><p>k个一组反转链表<br>ListNode reverseKGroup(ListNode head, int k) {<br>    if (head == null) return null;<br>    // 区间 [a, b) 包含 k 个待反转元素<br>    ListNode a, b;<br>    a = b = head;<br>    for (int i = 0 ; i &lt; k ; i++) {<br>        // 不足k个， 不需要反转， base case<br>        if (b == null)<br>            return head;<br>        b = b.next;<br>    }<br>    // 反转前k个元素<br>    ListNode newHead = reverse(a, b);<br>    // 递归反转后续链表并连接起来<br>    a.next = reverseKGroup(b, k);<br>    return newHead;<br>}</p><p>判断回文字符串<br>boolean isPalindrome(String s) {<br>    int left = 0, right = s.length - 1;<br>    while (left &lt; right) {<br>        if (s[left] != s[right])<br>            return false;<br>        left++;<br>        right–;<br>    }<br>    return true;<br>}</p><p>判断回文单链表<br>单链表无法倒着遍历， 无法使用双指针技巧<br>将原始链表反转后存入一条新的链表， 然后比较这两条链表是否相同</p><p>boolean isPalindrome(ListNode head) {</p><p>}</p><p>二叉树的遍历方式<br>void traverse(TreeNode root) {<br>    // 前序遍历代码<br>    traverse(root.left)<br>    // 中序遍历代码<br>    traverse(root.right)<br>    // 后序遍历代码<br>}</p><p>链表的前序遍历和后序遍历<br>void traverse(ListNode head) {<br>    // 前序遍历代码<br>    traverse(head.next);<br>    // 后序遍历代码<br>}</p><p>/* 倒序打印单链表中的元素值 */<br>void traverse(ListNode head) {<br>    if (head == null) return;<br>    traverse(head.next);<br>    // 后序遍历代码<br>    print(head.val);<br>}</p><p>模仿双指针实现回文判断的功能：<br>ListNode left;</p><p>boolean isPalindrome(ListNode head) {<br>    left = head;<br>    return traverse(head);<br>}</p><p>boolean traverse(ListNode right) {<br>    if (right == null) return true;<br>    boolean res = traverse(right.next);<br>    // 后序遍历代码<br>    res = res &amp;&amp; (right.val == left.val);<br>    left = left.next;<br>    return res;<br>}</p><p>优化空间复杂度<br>ListNode slow, fast;<br>slow = fast = head;<br>while (fast != null &amp;&amp; fast.next != null) {<br>    slow = slow.next;<br>    fast = fast.next.next;<br>}<br>// slow 指针现在指向链表中点<br>if (fast != null)<br>    slow = slow.next;</p><p>ListNode left = head;<br>ListNode right = reverse(slow);</p><p>while (right != null) {</p><p>}</p><p>二叉树遍历框架<br>/* 二叉树遍历框架 */<br>void traverse(TreeNode root) {<br>    // 前序遍历<br>    traverse(root.left)<br>    // 中序遍历<br>    traverse(root.right)<br>    // 后序遍历<br>}</p><p>快速排序<br>void quicksort(int[] nums, int lo, int hi) {<br>    /<strong>**</strong> 前序遍历位置 <strong>**</strong>/<br>    // 通过交换元素构建分界点 p<br>    int p = partition(nums, lo, hi);<br>    /<strong><strong><strong>*****</strong></strong></strong>/<br>    quicksort(nums, lo, p-1);<br>    quicksort(nums, p+1, hi);<br>}</p><p>归并排序<br>void sort(int[] nums, int lo, int hi) {<br>    int mid = (lo + hi) / 2;<br>    sort(nums, lo, mid);<br>    sort(nums, mid, hi);</p><pre><code>/****** 后序遍历位置 ******/// 合并两个排好序的子数组merge(nums, lo, mid, hi);</code></pre><p>}</p><p>只要涉及到递归，都可以抽象成二叉树的问题<br>写递归算法的关键是要明确函数的「定义」是什么，然后相信这个定义，利用这个定义推导最终结果，绝不要跳入递归的细节。</p><p>计算一棵二叉树共有几个节点：<br>// 定义：count(root) 返回以 root 为根的树有多少节点<br>int count(TreeNode root) {<br>    // base case<br>    if (root == null) return 0;<br>    // 自己加上子树的节点数就是整棵树的节点数<br>    return 1 + count(root.left) + count(root.right);<br>}</p><h1 id="226-翻转二叉树（简单）"><a href="#226-翻转二叉树（简单）" class="headerlink" title="226.翻转二叉树（简单）"></a>226.翻转二叉树（简单）</h1><p>我们发现只要把二叉树上的每一个节点的左右子节点进行交换，<br>最后的结果就是完全翻转之后的二叉树。</p><p>TreeNode invertTree(TreeNode root) {<br>    // base case<br>    if (root == null)<br>        return null;</p><pre><code>/*****前序遍历位置***********/ // root 节点需要交换它的左右子节点TreeNode tmp = root.left;root.left = root.right;root.right = tmp;// 让左右子节点继续翻转它们的子节点invertTree(root.left);invertTree(root.right);return root;</code></pre><p>}</p><h1 id="116-填充每个节点的下一个右侧节点指针（中等）"><a href="#116-填充每个节点的下一个右侧节点指针（中等）" class="headerlink" title="116.填充每个节点的下一个右侧节点指针（中等）"></a>116.填充每个节点的下一个右侧节点指针（中等）</h1><p>// Node connect(Node root) {<br>//     if (root == null || root.left == null) {<br>//         return root;<br>//     }<br>//     root.left.next = root.right;  // 连接每个节点的左右子节点</p><p>//     connect(root.left);<br>//     connect(root.right);</p><p>//     return root;<br>// }</p><p>// 主函数<br>Node connect(Node root) {<br>    if (root == null)<br>        return null;<br>    connectTwoNode(root.left, root.right);<br>    return root;<br>}</p><p>// 辅助函数<br>void connectTwoNode(Node node1. Node node2) {<br>    if (node1 == null || node2 == null) {<br>        return;<br>    }<br>    /<strong><em>前序遍历位置 ***</em></strong>/<br>    // 将传入的两个节点连接<br>    node1.next = node2;</p><pre><code>// 连接相同父节点的两个子节点connectTwoNode(node1.left, node1.right);connectTwoNode(node2.left, node2.right);// 连接跨越父节点的两个子节点connectTwoNode(node1.right, node2.left);</code></pre><p>}</p><h1 id="114-二叉树展开为链表（中等）"><a href="#114-二叉树展开为链表（中等）" class="headerlink" title="114.二叉树展开为链表（中等）"></a>114.二叉树展开为链表（中等）</h1><p>// 定义：将以 root 为根的树拉平为链表<br>void flatten(TreeNode root) {<br>    // base case<br>    if (root == null) return;</p><pre><code>// 将 root 的左子树和右子树拉平。flatten(root.left);flatten(root.right);/******后序遍历位置******/// 1、左右子树已经被拉平成一条链表TreeNode left = root.left;TreeNode right = root.right;// 2、将左子树作为右子树root.left = null;root.right = left;// 3、将 root 的右子树接到左子树(当前右子树)下方，然后将整个左子树作为右子树。TreeNode p = root;while (p.right != null) {    p = p.right;    }p.right = right; // 将 root 的右子树接到左子树</code></pre><p>}</p><p>#654.最大二叉树（中等）<br>int[] nums = [3,2,1,6,0,5];<br>reeNode constructMaximumBinaryTree(int[] nums) {<br>    return build(nums, 0, nums.length-1);<br>}</p><p>TreeNode build(int[] nums, int lo, int hi) {<br>    // base case<br>    if (lo &gt; hi) {<br>        return null;<br>    }</p><pre><code>// 找出数组中的最大值和对应的索引int maxVal = Integer.MIN_VALUE;int index = -1;for (int i=lo; i&lt;=hi; i++) {    if(nums[i] &gt; maxVal) {        maxVal = nums[i];        index = i;    }}// 构造根节点TreeNode root = new TreeNode(maxVal);// 递归调用构造左右子树root.left = build(nums, lo, index-1);root.right = build(nums, index+1, hi);return root;</code></pre><p>}</p><p>#105.从前序与中序遍历序列构造二叉树（中等）</p><p>#106.从中序与后序遍历序列构造二叉树（中等）</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>xcode</title>
+      <link href="/2020/12/18/xcode/"/>
+      <url>/2020/12/18/xcode/</url>
+      
+        <content type="html"><![CDATA[<p>xcode 使用相对路径<br><a href="https://blog.csdn.net/u010053344/article/details/51379222" target="_blank" rel="noopener">https://blog.csdn.net/u010053344/article/details/51379222</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> xcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>cpu内核概念</title>
+      <link href="/2020/12/10/cpu%E5%86%85%E6%A0%B8%E6%A6%82%E5%BF%B5/"/>
+      <url>/2020/12/10/cpu%E5%86%85%E6%A0%B8%E6%A6%82%E5%BF%B5/</url>
+      
+        <content type="html"><![CDATA[<p>性能基础之CPU、物理核、逻辑核概念与关系<br><a href="https://cloud.tencent.com/developer/article/1465603" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1465603</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>pytorch框架设计</title>
+      <link href="/2020/12/07/pytorch%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1/"/>
+      <url>/2020/12/07/pytorch%E6%A1%86%E6%9E%B6%E8%AE%BE%E8%AE%A1/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Intelij IDEA</title>
+      <link href="/2020/11/26/Intelij-IDEA/"/>
+      <url>/2020/11/26/Intelij-IDEA/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>TF-Lite 示例应用</title>
       <link href="/2020/11/24/TF-Lite-%E7%A4%BA%E4%BE%8B%E5%BA%94%E7%94%A8/"/>
       <url>/2020/11/24/TF-Lite-%E7%A4%BA%E4%BE%8B%E5%BA%94%E7%94%A8/</url>
@@ -328,7 +418,7 @@
       <link href="/2020/07/21/Java%E5%85%A5%E9%97%A8/"/>
       <url>/2020/07/21/Java%E5%85%A5%E9%97%A8/</url>
       
-        <content type="html"><![CDATA[<p>Java Dvelopment Kit (JDK)<br>    1. Java Runtime Enviroment (JRE)<br>        Includes the code behind all the variable types and built-in functions (ex. the println() function)<br>        包含所有变量类型和Java内置函数涉及的代码 比如println()函数</p><pre><code>    which allows Java code to run on any platform!    It also includes a Java Virtual Machine (JVM).    Runtime Enviroment 还含有一个Java虚拟机 该虚拟机可以从网上下载 可允许Java代码在任何计算机上运行 无论是Windows、Mac还是其它操作系统都可     很多电脑本身就装有Runtime Enviroment 因为计算机需要这个工具来运行网页里的Java应用程序    但是要开发我们自己的程序和Java应用，我们需要第二个工具 也就是Java编译器2. a Java compiler (javac)    A compiler is a special type of program that translates programing language code into code that a computer can excute    Program code --in--&gt; Compiler ---out--&gt; Translated code    Java Code -&gt; Compiler(javac) -&gt; Bytecode -&gt; Java Virtual Machine -&gt; Machine Code </code></pre><p>在编辑器中编写Java代码<br>    subl HelloWorld.java<br>    // 保存文件时 文件名应与类名相同<br>    public class HelloWorld {<br>        // class 在Java中是用来存放函数和代码并关联程序的<br>        public static void main(String[] args) {<br>            System.out.println(“Hello world!”);<br>        }<br>    }</p><p>在terminal中运行Java代码的流程<br>    1. javac 代码文件名.java<br>        对代码进行编译 生成class文件<br>    2. java 文件名<br>        执行java程序<br>    在编辑器修改代码后 需要重新编译</p><p>Java集成开发环境 Intellij<br>Debug<br>    断点<br>    step over<br>    resume<br>    step into<br>    step out</p><p>自动生成注释</p><p><a href="https://blog.csdn.net/qq_34581118/article/details/78409782" target="_blank" rel="noopener">https://blog.csdn.net/qq_34581118/article/details/78409782</a></p><p>ctrl + j 查看方法文档</p><p>static 表示它不需要对象就能运行，因此计算机在创建任何对象之前，会从该方法开始<br>构造方法：是特殊的方法，负责为该类创建和初始化对象<br>    1. 构造方法没有任何返回类型<br>    2. 构造方法的名称和类本身的名称一样</p><p>默认构造函数<br>参数化构造函数<br>class Game{<br>    int score;</p><pre><code>// Default constructorGame() {    score = 0;}// Constructor by starting score valueGame(int startingScore) {    score = startingScore;}</code></pre><p>}</p><p>// 访问构造方法<br>new关键字 要创建特定类的对象，你需要使用 new 关键字，后面是要使用的构造方法<br>Game tetris = new Game(); // 调用默认构造函数<br>Game darts = new Game(100); // 调用带参构造函数</p>]]></content>
+        <content type="html"><![CDATA[<p>Java Dvelopment Kit (JDK)<br>    1. Java Runtime Enviroment (JRE)<br>        Includes the code behind all the variable types and built-in functions (ex. the println() function)<br>        包含所有变量类型和Java内置函数涉及的代码 比如println()函数</p><pre><code>    which allows Java code to run on any platform!    It also includes a Java Virtual Machine (JVM).    Runtime Enviroment 还含有一个Java虚拟机 该虚拟机可以从网上下载 可允许Java代码在任何计算机上运行 无论是Windows、Mac还是其它操作系统都可     很多电脑本身就装有Runtime Enviroment 因为计算机需要这个工具来运行网页里的Java应用程序    但是要开发我们自己的程序和Java应用，我们需要第二个工具 也就是Java编译器2. a Java compiler (javac)    A compiler is a special type of program that translates programing language code into code that a computer can excute    Program code --in--&gt; Compiler ---out--&gt; Translated code    Java Code -&gt; Compiler(javac) -&gt; Bytecode -&gt; Java Virtual Machine -&gt; Machine Code </code></pre><p>在编辑器中编写Java代码<br>    subl HelloWorld.java<br>    // 保存文件时 文件名应与类名相同<br>    public class HelloWorld {<br>        // class 在Java中是用来存放函数和代码并关联程序的<br>        public static void main(String[] args) {<br>            System.out.println(“Hello world!”);<br>        }<br>    }</p><p>在terminal中运行Java代码的流程<br>    1. javac 代码文件名.java<br>        对代码进行编译 生成class文件<br>    2. java 文件名<br>        执行java程序<br>    在编辑器修改代码后 需要重新编译</p><p>Java集成开发环境 Intellij<br>Debug<br>    断点<br>    step over<br>    resume<br>    step into<br>    step out</p><p>自动生成注释<br>/ + a + tab<br><a href="https://blog.csdn.net/qq_34581118/article/details/78409782" target="_blank" rel="noopener">https://blog.csdn.net/qq_34581118/article/details/78409782</a></p><p>ctrl + j 查看方法文档</p><p>static 表示它不需要对象就能运行，因此计算机在创建任何对象之前，会从该方法开始<br>构造方法：是特殊的方法，负责为该类创建和初始化对象<br>    1. 构造方法没有任何返回类型<br>    2. 构造方法的名称和类本身的名称一样</p><p>默认构造函数<br>参数化构造函数<br>class Game{<br>    int score;</p><pre><code>// Default constructorGame() {    score = 0;}// Constructor by starting score valueGame(int startingScore) {    score = startingScore;}</code></pre><p>}</p><p>// 访问构造方法<br>new关键字 要创建特定类的对象，你需要使用 new 关键字，后面是要使用的构造方法<br>Game tetris = new Game(); // 调用默认构造函数<br>Game darts = new Game(100); // 调用带参构造函数</p><p>始终尝试将所有字段声明为 private<br>创建一个将这些 private 字段当做输入的构造函数<br>创建一个设置每个 private 字段的 public 方法，这样你就知道何时更改了字段。这些方法叫做 setter<br>创建一个返回每个 private 字段的 public 方法，这样你就能够读取该字段，而不会不小心更改了它。这些方法叫做 getter</p><p>将所有类设为 public<br>将所有字段设为 private<br>将所有当做操作的方法设为 public<br>将所有当做辅助方法的方法设为 private</p><p>System.out.println(“Enter your address: “);<br>// 创建scanner对象 Scanner 允许程序读取来自特定输入的任何数据类型<br>// 你可以使用它来读取 String、整数或整个行。<br>Scanner scanner = new Scanner(System.in);<br>// 在该 scanner 对象中调用方法 nextLine() 将返回一个 String，其中包含用户在按下”enter”前输入的所有内容。<br>String address = scanner.nextLine();<br>System.out.println(“You live in “ + address);</p><p>简而言之，在大多数情况下，你会希望变量和方法属于某个对象，而不是整个类，因此在大多数情况下，你不需要声明为 Static。但是，如果你要创建一个提供某种功能的类，而不是拥有自己的状态，那么就非常适合将其大部分方法和字段声明为 Static。</p><p>例如，还记得我们用来生成随机数字的 Math 类吗？该 Math 类是具有 random() 等大量 static 方法的类。因为没必要创建一个对象，叫做 math1，再创建一个对象，叫做 math2，所有 Math 都一样，因此我们可以直接使用该类本身来调用其方法，因此这时候就适合使用 static。</p><p>Static 属于类</p>]]></content>
       
       
       
