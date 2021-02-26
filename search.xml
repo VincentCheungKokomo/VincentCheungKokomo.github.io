@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title>Linux常用命令</title>
+      <link href="/2021/02/26/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+      <url>/2021/02/26/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<p>date 显示服务器时间<br>cal 显示日历</p><p>文件系统<br>root /根目录<br>cd / 跳到根目录<br>ls 查看当前文件<br>ls -l 查看当前文件详细信息<br>    第一个字母d 表示目录<br>    第一个字母- 表示文件</p><hr><p>clear 清除当前窗口<br>cd .. 退回到上层文件夹<br>mkdir tutorial 新建文件夹<br>rmdir tutorial 删除文件夹<br>cp file1.txt file2.txt 拷贝file1.txt到file2.txt</p><hr><p>cat filename 查看文件内容<br>diff file1 file2 比较文件差异<br>head（file2.txt -n 1） 查看文件的前几行<br>tail（file2.txt -n 1） 查看文件的后几行</p><hr><p>word count<br>wc file2.txt 结果 行数 单词数 多少字节<br>wc -l file2.txt 只查看行数<br>wc -w file2.txt 只查看单词数<br>wc -c file2.txt 只查看字节数</p><h2 id="rm-filename-删除文件-不可撤销"><a href="#rm-filename-删除文件-不可撤销" class="headerlink" title="rm filename 删除文件 不可撤销"></a>rm filename 删除文件 不可撤销</h2><p>mv<br>修改文件名<br>    mv file1.txt helloworld.txt<br>移动文件<br>    mv helloworld.txt CTutorial/</p><p>less filename.txt 只显示文档file的一部分 然后用上下箭头来翻动<br>使用q来退出</p><hr><p>chmod命令 更改权限<br>三段<br>u作者 g小组 o其他<br>rwx   rwx    rwx<br>110<br>二进制表示也行<br>读/写/运行</p><p>chmod u-r file2.txt 作者权限减r(不可读<br>chmod u+r file2.txt 恢复可读权限<br>chmod go-r file2.txt 除作者外其他人都不能读<br>chmod 444 全部可读</p><hr><p>grep命令 用于对文本文件进行搜索<br>grep France paris.txt 在paris.txt是否有France<br>grep a paris.txt  所有包含字母a的单词 正则表达式<br>grep a* paris.txt  字母a出现任意次的单词<br>grep aa* paris.txt  字母a至少出现一次的单词</p><p>grep ^F paris.txt 以F开头<br>grep d.g paris.txt  .通配符<br>grep d[oi]g paris.txt  [o或者i]<br>grep d[A-Za-z]g paris.txt [A-Za-z]任意英文字母</p><p>命令组合<br>查找并计数<br>grep d[A-Za-z]g paris.txt | wc</p><hr><p>zip 文件压缩<br>zip CProgram.zip * 压缩当前文件夹的内容到CProgram<br>unzip解压</p><p>tar<br>压缩<br>tar -zcvf CTut.tar.gz Ctutorial/<br>解压<br>tar -zxvf CTut.tar.gz</p><hr><p>下载<br>wget URL -O filename</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>操作系统</title>
+      <link href="/2021/02/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <url>/2021/02/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>VS code</title>
       <link href="/2020/12/19/VS-code/"/>
       <url>/2020/12/19/VS-code/</url>
@@ -495,19 +521,6 @@
       <url>/2020/06/22/%E3%80%8A%E6%88%91%E4%B8%BA%E4%BD%95%E8%80%8C%E7%94%9F%E3%80%8B/</url>
       
         <content type="html"><![CDATA[<p>《我为何而生》<br>罗素</p><p>有三种情感，单纯而强烈，支配着我的一生：对爱情的渴望，对知识的追求，以及对人类苦难不可遏制的同情。这些感情如阵阵巨风，挟卷着我在漂泊不定的路途中东飘西荡，飞越苦闷的汪洋大海，直抵绝望的边缘。</p><p>我之所以追寻爱情，首先，爱情使人心醉神迷，如此美妙的感觉，以致使我时常为了体验几小时爱的喜悦，而宁愿献出生命中其它一切；其次，爱情可以解除孤独，身历那种可怕孤寂的人的战栗意识，会穿过世界的边缘，直望入冰冷死寂的无底深渊；最后，置身于爱的结合，我在一个神秘缩影中看到了圣贤与诗人们所预想的天堂。这正是我所追寻的，尽管它对于人类的生活或许太过美好，却是我的最终发现。</p><p>我也以同样的热情追求知识。我渴望理解人类的心灵，渴望知道星辰为何闪耀，我还试图领略毕达哥拉斯关于哪些数字在变迁之上保持着永恒的智慧。在这一方面，我取得了一点成果，但并不算多。</p><p>爱情与知识，尽其可能，引领着我通往天堂；然而怜悯总是把我带回现实。那些痛苦的呼唤在我内心深处回响。饥饿中的孩子，被压迫和折磨的人们，给子女造成重担的无助老人，以及孤独、贫穷和痛苦的整个世界，都是对人类理想生活的嘲讽。我渴望能减少这些不幸，但无能为力，这也是我的痛苦。</p><p>这就是我的一生。我发现人生是值得的；而且如果能够再有一次这样的机会，我会欣然接受。</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>MQTTS接入指南</title>
-      <link href="/2020/06/15/MQTTS%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/"/>
-      <url>/2020/06/15/MQTTS%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97/</url>
-      
-        <content type="html"><![CDATA[<h1 id="创建产品"><a href="#创建产品" class="headerlink" title="创建产品"></a>创建产品</h1><p>产品 - 设备 - 数据流 - 数据点<br>产品ID: 354482<br>access_key: qeRqUb9LL2CuMKC5l5ErRr8mn60L4l5i35DCby+FPfA=<br>设备名称: drone3<br>drone3 key: bmUyIBGYHenGjGlByIkr9eGQC5W4qeZdEyTV9mIujFg=<br>token: 由python代码生成<br>version=2018-10-31&amp;res=products%2F354482%2Fdevices%2Fdrone3&amp;et=1592213387&amp;method=sha1&amp;sign=HlpuhfMQ8gih6YYI7mIUf8n%2BU8E%3D<br>MQTTS客户端 MQTT.fx</p><h1 id="数据点上传"><a href="#数据点上传" class="headerlink" title="数据点上传"></a>数据点上传</h1><p>topic:<br>    <code>$sys/{pid}/{device-name}/dp/post/json</code><br>    <code>$sys/354482/drone3/dp/post/json</code><br>    $sys/354482/drone3/dp/post/json/accepted<br>    $sys/354482/drone3/dp/post/json/rejected</p><h1 id="命令下发topic"><a href="#命令下发topic" class="headerlink" title="命令下发topic"></a>命令下发topic</h1><pre><code>`$sys/{pid}/{device-name}/cmd/#`  #表示与命令相关$sys/354482/drone3/cmd/#</code></pre>]]></content>
       
       
       
