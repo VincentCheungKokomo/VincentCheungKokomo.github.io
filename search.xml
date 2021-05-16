@@ -4,6 +4,84 @@
   
     
     <entry>
+      <title>vim入门教程</title>
+      <link href="/2021/05/15/vim%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"/>
+      <url>/2021/05/15/vim%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>shell教程</title>
+      <link href="/2021/05/11/shell%E6%95%99%E7%A8%8B/"/>
+      <url>/2021/05/11/shell%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vscode配置tf-gpu环境</title>
+      <link href="/2021/04/21/vscode%E9%85%8D%E7%BD%AEtf-gpu%E7%8E%AF%E5%A2%83/"/>
+      <url>/2021/04/21/vscode%E9%85%8D%E7%BD%AEtf-gpu%E7%8E%AF%E5%A2%83/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>TF教程</title>
+      <link href="/2021/03/29/TF%E6%95%99%E7%A8%8B/"/>
+      <url>/2021/03/29/TF%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tvm安装编译</title>
+      <link href="/2021/03/20/tvm%E5%AE%89%E8%A3%85%E7%BC%96%E8%AF%91/"/>
+      <url>/2021/03/20/tvm%E5%AE%89%E8%A3%85%E7%BC%96%E8%AF%91/</url>
+      
+        <content type="html"><![CDATA[<p>官网教程<br><a href="https://tvm.apache.org/docs/install/from_source.html" target="_blank" rel="noopener">https://tvm.apache.org/docs/install/from_source.html</a><br>克隆repo， 注意子模块不完整的问题<br>git clone –recursive <a href="https://github.com/apache/tvm" target="_blank" rel="noopener">https://github.com/apache/tvm</a> tvm<br>新建build目录<br>mkdir build<br>cp cmake/config.cmake build<br>编辑 build目录下的cmake文件<br>macos <code>set(LDFLAGS -lc++abi)</code><br><code>set(USE_GRAPH_RUNTIME ON)</code></p><p>llvm生成cpu代码<br><code>set(USE_LLVM /path/to/your/llvm/bin/llvm-config)</code><br><code>set(USE_LLVM ON</code></p><p>linux安装编译tvm<br><a href="https://sunicyosen.github.io/2019/08/02/TVM-Study-1-Setup-Environment" target="_blank" rel="noopener">https://sunicyosen.github.io/2019/08/02/TVM-Study-1-Setup-Environment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>llvm</title>
+      <link href="/2021/03/20/llvm/"/>
+      <url>/2021/03/20/llvm/</url>
+      
+        <content type="html"><![CDATA[<p>macos安装llvm<br><a href="https://blog.csdn.net/Charliewolf/article/details/101145768" target="_blank" rel="noopener">https://blog.csdn.net/Charliewolf/article/details/101145768</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux常用命令</title>
       <link href="/2021/02/26/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
       <url>/2021/02/26/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>

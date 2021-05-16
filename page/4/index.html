@@ -329,6 +329,929 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://vincentcheungkokomo.github.io/2020/07/28/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vincent Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/cosmos_dna.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vincentの银河系漫游指南">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/28/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" itemprop="url">深度优先搜索</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-28T10:16:28+08:00">
+                2020-07-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/28/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/28/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>示例代码<br>python<br>class TreeNode:<br>    def <strong>init</strong>(self, val):<br>        self.val = val;<br>        self.left, self.right = None, None</p>
+<p>C++<br>Struct TreeNode {<br>    int val;<br>    TreeNode * left;<br>    TreeNode * right;<br>    TreeNode(int x) : val(x),left(NULL),right(NULL) {}<br>}</p>
+<p>Java<br>public class TreeNode {<br>    public int val;<br>    public TreeNode left, right;</p>
+<pre><code>public TreeNode(int val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+}</code></pre><p>}</p>
+<p>二叉树dsf 示例代码<br>def dsf(node):<br>    if node in visited:<br>        # already visited<br>        return</p>
+<pre><code>visited.add(node)
+
+# process current node
+# ... # logic here
+dfs(node.left)
+dfs(node.right)</code></pre><p>多叉树dsf 示例代码<br>visited = set()<br>def dfs(node, visited):<br>    # terminator<br>    if node in visited:<br>        # already visited<br>        return </p>
+<pre><code>visited.add(node);
+
+# process current node here
+# 遍历所有子节点
+for next_node in node.children:
+    if not next_node in visited:
+        dfs(next_node, visited)</code></pre><p>DFS非递归写法<br>def DFS(self, tree):<br>    if tree.root is None:<br>        return []</p>
+<pre><code>visited, stack = [], [tree.root]
+while stack:
+    node = stack.pop()
+    visited.add(node)
+
+    process(node)
+    nodes = generate_related_nodes(node)
+    stack.push(nodes)
+
+# other processing work</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://vincentcheungkokomo.github.io/2020/07/23/%E9%80%92%E5%BD%92%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vincent Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/cosmos_dna.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vincentの银河系漫游指南">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/23/%E9%80%92%E5%BD%92%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88/" itemprop="url">递归代码模版</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-23T20:47:35+08:00">
+                2020-07-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/23/%E9%80%92%E5%BD%92%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/23/%E9%80%92%E5%BD%92%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># python 递归模版</span><br><span class="line">def recursion(level, param1, param2, ...):</span><br><span class="line">	# recursion terminator</span><br><span class="line">	if level &gt; MAX_LEVEL:</span><br><span class="line">		process_result</span><br><span class="line">		return</span><br><span class="line"></span><br><span class="line">	# process logic in current level</span><br><span class="line">	process(level, data...)</span><br><span class="line"></span><br><span class="line">	# drill down</span><br><span class="line">	self.recursion(level+1, p1, ...)</span><br><span class="line"></span><br><span class="line">	# reverse the current level status if needed</span><br></pre></td></tr></table></figure>
+
+<p>// Java递归模版<br>public class recursionTemplate {<br>    public void recur(int level, int param) {</p>
+<pre><code>    // terminator
+    if (level &gt; MAX_LEVEL) {
+        // process result
+        return;
+    }
+
+    // process current logic
+    process(level, param);
+
+    // drill down
+    recur(level: level + 1, newParam);
+
+    // restore current status
+}</code></pre><p>}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://vincentcheungkokomo.github.io/2020/07/23/%E5%88%86%E6%B2%BB%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vincent Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/cosmos_dna.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vincentの银河系漫游指南">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/23/%E5%88%86%E6%B2%BB%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88/" itemprop="url">分治代码模版</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-23T20:29:29+08:00">
+                2020-07-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/23/%E5%88%86%E6%B2%BB%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/23/%E5%88%86%E6%B2%BB%E4%BB%A3%E7%A0%81%E6%A8%A1%E7%89%88/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>def divede_conquer(problem, param1, param2, …):<br>    # recursion terminator<br>    if problem is None:<br>        print_result<br>        return</p>
+<pre><code># prepare data
+data = prepare_data(problem)
+subproblems = split_problem(problem, data)
+
+# conquer subproblems
+subresult1 = self.divede_conquer(subproblems[0], p1, ...)
+subresult2 = self.divede_conquer(subproblems[1], p1, ...)
+subresult3 = self.divede_conquer(subproblems[2], p1, ...)
+...
+
+# process and generate the final result
+result = process_result(subresult1, subresult2, subresult3, ...)</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://vincentcheungkokomo.github.io/2020/07/21/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%84%E4%B8%83%E4%B8%AA%E4%B9%A0%E6%83%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vincent Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/cosmos_dna.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vincentの银河系漫游指南">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/21/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%84%E4%B8%83%E4%B8%AA%E4%B9%A0%E6%83%AF/" itemprop="url">高效能人士的七个习惯</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-21T19:51:29+08:00">
+                2020-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/21/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%84%E4%B8%83%E4%B8%AA%E4%B9%A0%E6%83%AF/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/21/%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%84%E4%B8%83%E4%B8%AA%E4%B9%A0%E6%83%AF/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第一部分 思维方式与原则<br>    第一章 由内而外的造就自己<br>        付诸行动</p>
+<pre><code>    Q1:你是否曾做出推测时发现自己的判断过于匆忙？请对这种经历加以描述。
+    在青岛的时候，没有很好地去体谅对方，对你一会不热情，你就以为人家不爱你，冲动地做出了一些傻事，
+
+    Q2:你当时做出的推测是什么？
+    因为是最后一晚在一起，为什么要抗拒我，这样的观点是错误的，两个人在一起可以做很多其他的有意义的事情
+
+    Q3:想一下你做过的其他推测。本周你将对其中某一项采取什么行动？
+
+    （一）检验你的思维方式
+    你曾经到过其他国家，或本国的其他地区吗？你觉得哪些事情是陌生的奇怪的？
+    最近的一次是青岛，当地人
+
+    人们的行为是否如你预期？你对他们的行为有何看法？
+
+    回想你的旅游经历，你认为当地人对你的看法如何？你是否认为他们对你的看法与你对他们的看法可能很类似？
+
+    如果你有机会在旅途中认识当地人，你对他们的看法或推测会有什么改变？
+
+    （二）转换你的思维方式
+    回想一下通往你的工作场所或你家的不同路径。是否有些路径比其他的更复杂？是否有时其中一条比其他的更方便？为什么方便，为什么不方便
+
+    你是否发现过一条你以前不知道的新路径？走不同的路径的新鲜感如何？
+
+    现在想一下你与他人打交道的方式。与他们打交道是否有好几种方式？你有可能尝试哪些新的方式？
+
+    （三）影响你生活的五个原则
+    请列出影响你的日常生活的五个原则。它们以怎样的方式影响你？它们是以积极还是消极的方式影响你的生活？
+    1.
+    2.
+    3.
+    4.
+    5.
+
+
+
+第二章 七个行动概论
+    付诸行动</code></pre><p>第二部分 个人领域的成功：从依赖到独立<br>    第三章 习惯一： 积极主动——个人愿景的原则<br>        付诸行动</p>
+<pre><code>第四章 习惯二： 以始为终——自我领导的原则
+    付诸行动
+
+第五章 习惯三： 要事第一——自我管理的原则
+    付诸行动</code></pre><p>第三部分 公众领域的成功：从独立到互赖<br>    第六章 人际关系的本质<br>        付诸行动</p>
+<pre><code>第七章 习惯四：双赢思维——人际领导的原则
+    付诸行动
+
+第八章 习惯五：知彼解己——移情沟通的原则
+    付诸行动
+
+第九章 习惯六：统合综效——创造性合作的原则
+    付诸行动</code></pre><p>第四部分 自我提升和完善<br>    第十章 习惯七：不断更新——平衡点自我提升法则<br>        付诸行动</p>
+<pre><code>第十一章 再论由内而外造就自己
+    付诸行动</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://vincentcheungkokomo.github.io/2020/07/21/Java%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vincent Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/cosmos_dna.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vincentの银河系漫游指南">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/21/Java%E5%85%A5%E9%97%A8/" itemprop="url">Java入门</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-21T10:02:34+08:00">
+                2020-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/21/Java%E5%85%A5%E9%97%A8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/21/Java%E5%85%A5%E9%97%A8/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Java Dvelopment Kit (JDK)<br>    1. Java Runtime Enviroment (JRE)<br>        Includes the code behind all the variable types and built-in functions (ex. the println() function)<br>        包含所有变量类型和Java内置函数涉及的代码 比如println()函数</p>
+<pre><code>    which allows Java code to run on any platform!
+    It also includes a Java Virtual Machine (JVM).
+    Runtime Enviroment 还含有一个Java虚拟机 该虚拟机可以从网上下载 可允许Java代码在任何计算机上运行 无论是Windows、Mac还是其它操作系统都可 
+    很多电脑本身就装有Runtime Enviroment 因为计算机需要这个工具来运行网页里的Java应用程序
+    但是要开发我们自己的程序和Java应用，我们需要第二个工具 也就是Java编译器
+
+2. a Java compiler (javac)
+    A compiler is a special type of program that translates programing language code into code that a computer can excute
+    Program code --in--&gt; Compiler ---out--&gt; Translated code
+    Java Code -&gt; Compiler(javac) -&gt; Bytecode -&gt; Java Virtual Machine -&gt; Machine Code </code></pre><p>在编辑器中编写Java代码<br>    subl HelloWorld.java<br>    // 保存文件时 文件名应与类名相同<br>    public class HelloWorld {<br>        // class 在Java中是用来存放函数和代码并关联程序的<br>        public static void main(String[] args) {<br>            System.out.println(“Hello world!”);<br>        }<br>    }</p>
+<p>在terminal中运行Java代码的流程<br>    1. javac 代码文件名.java<br>        对代码进行编译 生成class文件<br>    2. java 文件名<br>        执行java程序<br>    在编辑器修改代码后 需要重新编译</p>
+<p>Java集成开发环境 Intellij<br>Debug<br>    断点<br>    step over<br>    resume<br>    step into<br>    step out</p>
+<p>自动生成注释<br>/ + a + tab<br><a href="https://blog.csdn.net/qq_34581118/article/details/78409782" target="_blank" rel="noopener">https://blog.csdn.net/qq_34581118/article/details/78409782</a></p>
+<p>ctrl + j 查看方法文档</p>
+<p>static 表示它不需要对象就能运行，因此计算机在创建任何对象之前，会从该方法开始<br>构造方法：是特殊的方法，负责为该类创建和初始化对象<br>    1. 构造方法没有任何返回类型<br>    2. 构造方法的名称和类本身的名称一样</p>
+<p>默认构造函数<br>参数化构造函数<br>class Game{<br>    int score;</p>
+<pre><code>// Default constructor
+Game() {
+    score = 0;
+}
+
+// Constructor by starting score value
+Game(int startingScore) {
+    score = startingScore;
+}</code></pre><p>}</p>
+<p>// 访问构造方法<br>new关键字 要创建特定类的对象，你需要使用 new 关键字，后面是要使用的构造方法<br>Game tetris = new Game(); // 调用默认构造函数<br>Game darts = new Game(100); // 调用带参构造函数</p>
+<p>始终尝试将所有字段声明为 private<br>创建一个将这些 private 字段当做输入的构造函数<br>创建一个设置每个 private 字段的 public 方法，这样你就知道何时更改了字段。这些方法叫做 setter<br>创建一个返回每个 private 字段的 public 方法，这样你就能够读取该字段，而不会不小心更改了它。这些方法叫做 getter</p>
+<p>将所有类设为 public<br>将所有字段设为 private<br>将所有当做操作的方法设为 public<br>将所有当做辅助方法的方法设为 private</p>
+<p>System.out.println(“Enter your address: “);<br>// 创建scanner对象 Scanner 允许程序读取来自特定输入的任何数据类型<br>// 你可以使用它来读取 String、整数或整个行。<br>Scanner scanner = new Scanner(System.in);<br>// 在该 scanner 对象中调用方法 nextLine() 将返回一个 String，其中包含用户在按下”enter”前输入的所有内容。<br>String address = scanner.nextLine();<br>System.out.println(“You live in “ + address);</p>
+<p>简而言之，在大多数情况下，你会希望变量和方法属于某个对象，而不是整个类，因此在大多数情况下，你不需要声明为 Static。但是，如果你要创建一个提供某种功能的类，而不是拥有自己的状态，那么就非常适合将其大部分方法和字段声明为 Static。</p>
+<p>例如，还记得我们用来生成随机数字的 Math 类吗？该 Math 类是具有 random() 等大量 static 方法的类。因为没必要创建一个对象，叫做 math1，再创建一个对象，叫做 math2，所有 Math 都一样，因此我们可以直接使用该类本身来调用其方法，因此这时候就适合使用 static。</p>
+<p>Static 属于类</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://vincentcheungkokomo.github.io/2020/07/19/%E6%9E%81%E5%AE%A2%E5%A4%A7%E5%AD%A6%E4%BD%9C%E4%B8%9A%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Vincent Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/cosmos_dna.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vincentの银河系漫游指南">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/19/%E6%9E%81%E5%AE%A2%E5%A4%A7%E5%AD%A6%E4%BD%9C%E4%B8%9A%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B/" itemprop="url">极客大学作业提交流程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-19T21:48:56+08:00">
+                2020-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/19/%E6%9E%81%E5%AE%A2%E5%A4%A7%E5%AD%A6%E4%BD%9C%E4%B8%9A%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/19/%E6%9E%81%E5%AE%A2%E5%A4%A7%E5%AD%A6%E4%BD%9C%E4%B8%9A%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><figcaption><span>add .</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;week0X assignment&quot;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<p>将对应的链接复制到原始仓库的issue</p>
+<p>#学号:G20200343090088<br>#姓名:张文胜<br>#班级:12期2班<br>#语言:java<br>#作业&amp;总结链接: <a href="https://github.com/VincentCheungKokomo/algorithm012/tree/master/Week_02" target="_blank" rel="noopener">https://github.com/VincentCheungKokomo/algorithm012/tree/master/Week_02</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://vincentcheungkokomo.github.io/2020/07/08/%E5%88%BB%E6%84%8F%E7%BB%83%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -929,879 +1852,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://vincentcheungkokomo.github.io/2020/06/02/%E3%80%8A%E5%B9%B8%E7%A6%8F%E8%AF%BE%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Vincent Zhang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/cosmos_dna.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vincentの银河系漫游指南">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/02/%E3%80%8A%E5%B9%B8%E7%A6%8F%E8%AF%BE%E3%80%8B/" itemprop="url">《幸福课》</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-02T18:39:22+08:00">
-                2020-06-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BF%83%E7%90%86/" itemprop="url" rel="index">
-                    <span itemprop="name">心理</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/06/02/%E3%80%8A%E5%B9%B8%E7%A6%8F%E8%AF%BE%E3%80%8B/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/02/%E3%80%8A%E5%B9%B8%E7%A6%8F%E8%AF%BE%E3%80%8B/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>19 如何让爱情天长地久</p>
-<ol>
-<li><p>working hard 爱情需要努力耕耘<br>什么是幸福的relationship<br>不能有固定思维 威胁主观意识 finding mindset(fixed)<br>可塑性思维 培养感情 与努力有关 malleable mindset - cultivating mindset(effort)<br>现实中没有完美的爱情<br>找一个对的人的确很重要，然而对这段感情的经营则尤为重要<br>经营感情 working together, being together, spending time together, dedicating one another<br>there are conflicts in a relationship<br>解决矛盾的关键在于 拥有共同的目标<br>主动型的爱 自我认知理论 社交惯例（共进晚餐等）</p>
-</li>
-<li><p>将想要被认可的想法转变为想要被了解<br>be validated 被认可- be known 被了解<br>to be known rather than to be validated 被了解而不只是被认可<br>主动去了解我们的伴侣 最喜欢的酒 最喜欢的花 喜欢如何被碰触 了解他们的恐惧与欲望 什么时候应该给他们留下个人空间<br>什么时候应该与他们谈心 什么时候应该触摸他们 而这些都是需要时间的 life-long process<br>sharing the secret 当分享的时候 将为感情关系带来长期积极的效果<br>亲密时让对方真正了解你 包括那些你或你的伴侣不喜欢的事<br>感情关系的基础是被了解 做真实的自己 认同自己 认同彼此 growing together<br>坦露心声让我们更容易得到伴侣真诚的爱意。为什么呢？因为只有真诚才能够获得别人的信任，坦诚的人更容易被接纳。坦诚相待也能够让一段关系更持久，所以尽自己所能去了解自己的真实想法，并了解你的另一半吧。</p>
-</li>
-<li><p>允许争执的存在<br>冲突是感情中不可避免也是至关重要的组成<br>如果没有冲突 很可能意味着我们正在抑制一些东西 情感 分歧<br>也就是说我们没有互相理解 需要敞开胸怀与人分享<br>幸福推进剂 在一起做有意义有趣的事情<br>Love is in the details, it’s about knowing about the little things and the big things, it is about sharing and being known<br>细节之处见真爱 在于全面了解 在于分享 和被了解<br>抚摸 相视 共进晚餐 拥抱<br>表现出兴趣 创造爱的交流 理解对方<br>抚摸 微笑 送花<br>赞美对方 欣赏促进欣赏<br>不懂得欣赏 不会去赞美 美好的事物也会贬值<br>不要等到别人要求你去赞美 主动点 尽管是免费的<br>从总的趋势来看却又是无价的 赞美者和被赞美者都受益匪浅<br>“making” love 要拥有长久的关系 生理方面是十分重要的<br>交流很重要<br>更加关注彼此 冷静下来 理解对方 心有灵犀<br>在处理争执时如何保持理性的认知<br>对事不对人<br>己所不欲 勿施于人<br>人所不欲 勿施于己<br>感情关系的关键是培养真挚的意义深远的友情</p>
-</li>
-<li><p>积极观念<br>创造优点 而非单纯的发掘优点<br>benifit-creating rather than benifit-finding<br>欣赏伴侣的自律而不将其视为固执<br>欣赏伴侣的幽默感而不将其视为轻浮<br>积极幻觉<br>爱情不仅能感知潜能 还能发挥我们的潜能<br>《尽善尽美》<br>You make me want to be a better man</p>
-</li>
-</ol>
-<p>21 爱情与自尊<br>在朋友身上 我寻求的不是妥协让步 不是盲目同意我的观点的人<br>我所寻找的是完美的敌人 会挑战我 会敦促我 会帮助我寻求真理的人</p>
-<p>提问的重要性<br>questions begin a quest 提问是探求的开端<br>可以发现我们之前忽略的东西<br>提出积极的问题<br>    我的伴侣有什么是值得我感激的？<br>    我们的关系有何美妙之处，有什么进行的很顺利，<br>    最初我们怎么会走到一起的，我爱ta哪一点，有什么好的方面</p>
-<p>我们一直在追求真相 但是当真相来敲我们门的时候 我们却说走开 我在找真相呢</p>
-<p>主动有建设性（active construction）的回应<br>win-win<br>认同 重视对方 与对方融为一体 真诚的回应<br>螺旋上升 构建积极的动力<br>当说到好的关系 健康的关系时 是没有捷径的<br>如果你想要成功就要努力 就像人生中其它每一个方面一样<br>没有捷径 但那并不意味着 这种努力不能是令人享受的 不能是令人愉快并充满意义的<br>而当这种努力变得令人愉快并充满意义时 久而久之 它就会带来更幸福的关系 更幸福的个人<br>带来一个双赢的共存<br>存在有牺牲并且是健康的牺牲 但那并不是一种根本上基于责任感<br>或者为了他人否定自我的关系<br>我们越是独立 就越是相互依存</p>
-<p>自尊 关于我对自己的态度<br>definition：这是在有能力迎接生活的基本挑战 并感到幸福的人生经历中形成的个性<br>为什么自尊很重要？<br>在我们所做出的所有评判中 没有哪个比我们对自己的评判更重要<br>一个人可能犯的最大的罪恶是瞧不起自己<br>高自尊带来的好处<br>    心理健康 更坚韧 更能应对困境<br>    提升情感关系<br>    自我概念就是自我命运 信念是自我实现的预言<br>    如果我认为自己有价值 相信自我 相信自己有能力 我将更有可能成功<br>        成功的两个因素<br>        1. 乐于发问 乐于学习<br>        2. 相信自己</p>
-<pre><code>高情商 自省智商和人际交往智商
-幸福 相关比0.6</code></pre><p>低自尊心与焦虑相关<br>每个人都会焦虑 就像万有引力是一种物理本质 焦虑也是一种人性的本质</p>
-<p>自尊： 意识的免疫系统 更坚韧的心理状态<br>当我们有高自尊时 我们将有更强的心理适应力<br>强壮的免疫系统不代表不生病 我们会生病 但较少生病 并恢复的比较快<br>少生病 健康才是主旋律<br>追求幸福 而不是一直逃避不幸福</p>
-<p>潜在的因素决定心理障碍或疾病 - 自尊帮助我们理解各种情绪和行为的问题 帮助我们治疗大部分情绪和行为问题<br>不止应用于个人层面还应用于社会层面 社会疫苗</p>
-<p>傲慢自恋不等于自尊</p>
-<p>自尊的本质：<br>自尊不是通过空虚的心理强化获得的<br>区别于伪自尊 心理健康是一种与现实密切相关的状态<br>自尊是基于现实的 基于实际表现的 基于实际成功和实际练习的 是辛勤劳动的成果</p>
-<p>成功的秘密：乐观 相信自己 对所做的事充满激情 最后是勤劳的工作<br>六个练习有助于培养自尊心<br>    正直 言行一致 通过行动与自己交流<br>    自我意识 “我的话很重要 我很重要” 了解自己<br>    有目标 有发自内心的追求 为人生的目标和感召生活<br>    承担责任 要想改变你的人生只有靠你自己（没有人会来）<br>    自我接受的练习 Permission to be human on a daily basis 允许自己做一个普通人<br>    自信的练习 在应该说不的时候说不 在应该说是的时候说是 坚持我们的信仰<br>这些是逐渐培养自尊的练习 同时也是自尊的产物 是一个潜在的自我强化循环</p>
-<p>自尊悖论 成功和低自尊联系在一起<br>自尊不是来源于成功 也不是来源于社会地位或金钱</p>
-<p>自尊的三层渐进式过程<br>           自我价值                  能力<br>1 依赖性自尊 来自他人的赞扬 认同所产生的自尊 不断在寻求自我的肯定 恐惧他人的批评 易被他人左右<br>和其他人比较 每个人都有某种程度的依赖性自尊（人性的本质）<br>2 独立性自尊 由内而发的自尊 根据自己的标准自我评估<br>不与他人比较，而是与自己比较 寻求他人的批判 不断寻求善意的敌人 那些人给ta出难题 在其探索真理的道路上助其一臂之力 因为他们想进步 他们的根本动力是他们自己的兴趣所在<br>3 绝对自尊 简单而自然地存在着的状态 不取决于他人的评价 甚至不由我自己的评价决定 足够自信 不接受任何评价的影响 并不是指漠视或者排斥他人的情感<br>当我们置身事外时，我们与他人的关系更加和谐友好 并且我们也更在乎他们 我们更同情 也更怜悯他人<br>我们尽量置身事外 我们不会因为与他人比较而感到羡慕 骄傲或自卑<br>相互决定 有时需要花上终生的时间才能培养足够强的绝对自尊 就像学习走路一样</p>
-<p>怎样培养独立和无条件的自尊</p>
-<p>如何提高自己自尊水平</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://vincentcheungkokomo.github.io/2020/05/18/%E3%80%8A%E9%97%A8%E5%89%8D%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Vincent Zhang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/cosmos_dna.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vincentの银河系漫游指南">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/18/%E3%80%8A%E9%97%A8%E5%89%8D%E3%80%8B/" itemprop="url">《门前》</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-18T20:43:28+08:00">
-                2020-05-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/05/18/%E3%80%8A%E9%97%A8%E5%89%8D%E3%80%8B/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/18/%E3%80%8A%E9%97%A8%E5%89%8D%E3%80%8B/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>《门前》
- 顾城</code></pre><p>我多么希望，有一个门口<br>早晨，阳光照在草上</p>
-<p>我们站着<br>扶着自己的门扇<br>门很低，但太阳是明亮的</p>
-<p>草在结它的种子<br>风在摇它的叶子<br>我们站着，不说话<br>就十分美好</p>
-<p>有门，不用开开<br>是我们的，就十分美好</p>
-<p>早晨，黑夜还要流浪<br>我们把六弦琴交给他<br>我们不走了</p>
-<p>我们需要土地<br>需要永不毁灭的土地<br>我们要乘着它<br>度过一生</p>
-<p>土地是粗糙的，有时狭隘<br>然而，它有历史<br>有一份天空，一份月亮<br>一份露水和早晨</p>
-<p>我们爱土地<br>我们站着<br>用木鞋挖着泥土<br>门也晒热了<br>我们轻轻靠着，十分美好</p>
-<p>墙后的草<br>不会再长大了<br>它只用指尖，触了触阳光</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://vincentcheungkokomo.github.io/2020/05/16/%E3%80%8AWhen-You-Are-Old%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Vincent Zhang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/cosmos_dna.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vincentの银河系漫游指南">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/16/%E3%80%8AWhen-You-Are-Old%E3%80%8B/" itemprop="url">《When You Are Old》</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-16T21:38:01+08:00">
-                2020-05-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/poem/" itemprop="url" rel="index">
-                    <span itemprop="name">poem</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/05/16/%E3%80%8AWhen-You-Are-Old%E3%80%8B/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/16/%E3%80%8AWhen-You-Are-Old%E3%80%8B/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>When You Are Old<br>《当你老了》<br>——William Butler Yeats<br>冰心译</p>
-<p>When you are old and grey and full of sleep,<br>当你老了，头发花白，睡意沉沉，<br>And nodding by the fire, take down this book,<br>倦坐在炉边，取下这本书来，<br>And slowly read, and dream of the soft look<br>慢慢读着，追梦当年的眼神<br>Your eyes had once, and of their shadows deep;<br>那柔美的神采与深幽的晕影。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/05/16/%E3%80%8AWhen-You-Are-Old%E3%80%8B/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://vincentcheungkokomo.github.io/2020/05/15/C-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Vincent Zhang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/cosmos_dna.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vincentの银河系漫游指南">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/15/C-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" itemprop="url">C++多线程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-15T16:39:09+08:00">
-                2020-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/05/15/C-%E5%A4%9A%E7%BA%BF%E7%A8%8B/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/15/C-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使用 C++11 编写 Linux 多线程程序</p>
-<p><a href="https://www.ibm.com/developerworks/cn/linux/1412_zhupx_thread/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/linux/1412_zhupx_thread/index.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://vincentcheungkokomo.github.io/2020/05/12/%E5%88%86%E5%B8%83%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Vincent Zhang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/cosmos_dna.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vincentの银河系漫游指南">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/12/%E5%88%86%E5%B8%83%E5%BC%8F/" itemprop="url">分布式锁</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-12T20:16:52+08:00">
-                2020-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/05/12/%E5%88%86%E5%B8%83%E5%BC%8F/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/12/%E5%88%86%E5%B8%83%E5%BC%8F/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>火车站售票问题 四个窗口 卖票 线程不安全</p>
-<p>synchronize和Lock的区别<br>Lock Java队列实现<br>synchronize 操作系统实现</p>
-<p>数据库MySQl<br>Redis数据库<br>    1.缓存有效期<br>    2.SETNX命令<br>    3.lua脚本</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://vincentcheungkokomo.github.io/2020/05/02/C-%E8%99%9A%E5%87%BD%E6%95%B0%E4%B8%8E%E5%A4%9A%E6%80%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Vincent Zhang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/cosmos_dna.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Vincentの银河系漫游指南">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/02/C-%E8%99%9A%E5%87%BD%E6%95%B0%E4%B8%8E%E5%A4%9A%E6%80%81/" itemprop="url">C++虚函数与多态</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-02T11:49:00+08:00">
-                2020-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/05/02/C-%E8%99%9A%E5%87%BD%E6%95%B0%E4%B8%8E%E5%A4%9A%E6%80%81/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/02/C-%E8%99%9A%E5%87%BD%E6%95%B0%E4%B8%8E%E5%A4%9A%E6%80%81/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="C-纯虚函数与抽象类"><a href="#C-纯虚函数与抽象类" class="headerlink" title="C++ - 纯虚函数与抽象类"></a>C++ - 纯虚函数与抽象类</h2><p><a href="https://blog.csdn.net/qq_41453285/article/details/92715943" target="_blank" rel="noopener">https://blog.csdn.net/qq_41453285/article/details/92715943</a></p>
-<p><a href="https://www.jianshu.com/p/852e5bf33f4a" target="_blank" rel="noopener">https://www.jianshu.com/p/852e5bf33f4a</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">&gt;</a>
   </nav>
 
 
@@ -1852,7 +1907,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1888,7 +1943,7 @@
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="git@github.com:VincentCheungKokomo" target="_blank" title="GitHub">
+                    <a href="https://github.com/VincentCheungKokomo" target="_blank" title="GitHub">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
