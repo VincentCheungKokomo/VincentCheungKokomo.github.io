@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>vscode + markdown</title>
+      <link href="/2021/05/24/vscode-markdown/"/>
+      <url>/2021/05/24/vscode-markdown/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级"><a href="#二级" class="headerlink" title="二级"></a>二级</h2><h3 id="三级"><a href="#三级" class="headerlink" title="三级"></a>三级</h3><p>这是正文<br>换了一行？</p><p>换了一段<br>强调 <em>斜体</em> <strong>加粗</strong>  </p><h2 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h2><ol><li>alice</li><li>bob<ol><li>bob dylan</li></ol></li><li>charlie  </li></ol><p>无序列表  </p><h2 id="复制图片-cmd-alt-v"><a href="#复制图片-cmd-alt-v" class="headerlink" title="复制图片  cmd + alt + v"></a>复制图片  cmd + alt + v</h2><p><img src="2021-05-21-11-34-32.png" alt=""><br><em>Richard Feymann</em></p><h2 id="单独一行公式"><a href="#单独一行公式" class="headerlink" title="单独一行公式"></a>单独一行公式</h2><p>$$<br>\lim_{x \to 0}\frac{sin(x)}{x}=1<br>$$</p><p>在一段文字中插入公式 ctrl + m<br>在一段公式中插入公式 $\lim_{x \to 0}\frac{sin(x)}{x}=1$</p><h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><table><thead><tr><th align="left">小明</th><th align="center">大明</th><th align="right">姚明</th></tr></thead><tbody><tr><td align="left">1.5</td><td align="center">1.7</td><td align="right">2.3</td></tr><tr><td align="left">1.58</td><td align="center">1.75</td><td align="right">2.26</td></tr></tbody></table><p>alt + shift + f 格式化</p><h2 id="插入链接"><a href="#插入链接" class="headerlink" title="插入链接"></a>插入链接</h2><p>这是一个<a href="https://www.bilibili.com/video/BV1si4y1472o?from=search&seid=4271663183397048354" target="_blank" rel="noopener">markdown视频教程链接</a></p><h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vim入门教程</title>
       <link href="/2021/05/15/vim%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/"/>
       <url>/2021/05/15/vim%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/</url>
